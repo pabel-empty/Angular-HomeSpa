@@ -1,0 +1,190 @@
+<!--Add New Price Popup-->
+<c-modal [visible]="addPricingVisible" [size]="'lg'" (visibleChange)="pricingVisibleChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Add New Price</h5>
+    <button (click)="closePricingVisiblePopup()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <c-card class="mb-4">
+      <c-card-body>
+        <form [formGroup]="pricingForm">
+          <c-input-group class="mb-3">
+            <input aria-describedby="basic-addon1"
+                   aria-label="name"
+                   cFormControl
+                   placeholder="Add Plan Title"
+                   formControlName="title"
+            />
+            <c-form-feedback *ngIf="(pricingForm.get('title')?.touched || pricingForm.get('title')?.dirty) && pricingForm.get('title')!.errors?.['required']" style="display: block !important;">
+              Title is required *
+            </c-form-feedback>
+          </c-input-group>
+          <c-input-group class="mb-3">
+            <select aria-label="Default select example" cSelect formControlName="planType">
+              <option selected value="" disabled>Pricing Type</option>
+              <option *ngFor="let types of pricingTypes" [value]="types">{{types}}</option>
+            </select>
+            <c-form-feedback *ngIf="(pricingForm.get('planType')?.touched || pricingForm.get('planType')?.dirty) && pricingForm.get('planType')!.errors?.['required']" style="display: block !important;">
+              Plan Type is required *
+            </c-form-feedback>
+          </c-input-group>
+
+
+          <div class="pricingItem">
+            <p>First Item Price</p>
+            <c-input-group class="mb-3">
+              <input cFormControl
+                     placeholder="First Plan Title"
+                     formControlName="firstPlanTitle"
+              />
+              <c-form-feedback *ngIf="(pricingForm.get('firstPlanTitle')?.touched || pricingForm.get('firstPlanTitle')?.dirty) && pricingForm.get('firstPlanTitle')!.errors?.['required']" style="display: block !important;">
+                First Plan Title is Required *
+              </c-form-feedback>
+            </c-input-group>
+            <c-input-group class="mb-3">
+              <input cFormControl
+                     placeholder="First Plan Price"
+                     formControlName="firstPlanPrice"
+              />
+              <c-form-feedback *ngIf="(pricingForm.get('firstPlanPrice')?.touched || pricingForm.get('firstPlanPrice')?.dirty) && pricingForm.get('firstPlanPrice')!.errors?.['required']" style="display: block !important;">
+                First Plan Price is Required *
+              </c-form-feedback>
+            </c-input-group>
+            <c-input-group>
+              <input cFormControl
+                     placeholder="First Plan Description"
+                     formControlName="firstPlanDescription"
+              />
+            </c-input-group>
+          </div>
+
+          <div class="pricingItem">
+            <p>Second Item Price</p>
+            <c-input-group class="mb-3">
+              <input cFormControl
+                     placeholder="Second Plan Title"
+                     formControlName="secondPlanTitle"
+              />
+              <c-form-feedback *ngIf="(pricingForm.get('secondPlanTitle')?.touched || pricingForm.get('secondPlanTitle')?.dirty) && pricingForm.get('secondPlanTitle')!.errors?.['required']" style="display: block !important;">
+                Second Plan Title is Required *
+              </c-form-feedback>
+            </c-input-group>
+            <c-input-group class="mb-3">
+              <input cFormControl
+                     placeholder="Second Plan Price"
+                     formControlName="secondPlanPrice"
+              />
+              <c-form-feedback *ngIf="(pricingForm.get('secondPlanPrice')?.touched || pricingForm.get('secondPlanPrice')?.dirty) && pricingForm.get('secondPlanPrice')!.errors?.['required']" style="display: block !important;">
+                Second Plan Price is Required *
+              </c-form-feedback>
+            </c-input-group>
+            <c-input-group>
+              <input cFormControl
+                     placeholder="Second Plan Description"
+                     formControlName="secondPlanDescription"
+              />
+            </c-input-group>
+          </div>
+
+          <div class="pricingItem">
+            <p>Third Item Price</p>
+            <c-input-group class="mb-3">
+              <input cFormControl
+                     placeholder="Third Plan Title"
+                     formControlName="thirdPlanTitle"
+              />
+              <c-form-feedback *ngIf="(pricingForm.get('thirdPlanTitle')?.touched || pricingForm.get('thirdPlanTitle')?.dirty) && pricingForm.get('thirdPlanTitle')!.errors?.['required']" style="display: block !important;">
+                Third Plan Title is Required *
+              </c-form-feedback>
+            </c-input-group>
+            <c-input-group class="mb-3">
+              <input cFormControl
+                     placeholder="Third Plan Price"
+                     formControlName="thirdPlanPrice"
+              />
+              <c-form-feedback *ngIf="(pricingForm.get('thirdPlanPrice')?.touched || pricingForm.get('thirdPlanPrice')?.dirty) && pricingForm.get('thirdPlanPrice')!.errors?.['required']" style="display: block !important;">
+                Third Plan Price is Required *
+              </c-form-feedback>
+            </c-input-group>
+            <c-input-group>
+              <input cFormControl
+                     placeholder="Third Plan Description"
+                     formControlName="thirdPlanDescription"
+              />
+            </c-input-group>
+          </div>
+
+          <c-button-group class="btn_group">
+            <button [disabled]="pricingForm.invalid" cButton *ngIf="!loadingSpinnerService" color="dark" (click)="submitNewPrice()">Save</button>
+            <button cButton *ngIf="loadingSpinnerService" disabled>
+              <c-spinner aria-hidden="true" size="sm"></c-spinner>
+              Loading...
+            </button>
+            <button *ngIf="!loadingSpinnerService" cButton color="light" (click)="clearSubmitForm()">Clear</button>
+          </c-button-group>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-modal-body>
+</c-modal>
+<!--Add New Price Popup-->
+
+<!--Pricing List Delete Popup-->
+<c-modal [visible]="deletePricingVisible" (visibleChange)="deleteVisibleChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Price Delete Confirmation</h5>
+    <button (click)="closeDeletePopup()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body><strong style="width: 100%;">Are you want to sure delete ?</strong></c-modal-body>
+  <c-modal-footer>
+    <button cButton color="primary" (click)="permanentlyDelete()">Delete Confirm</button>
+  </c-modal-footer>
+</c-modal>
+<!--Pricing List Delete Popup-->
+
+
+<c-navbar class="bg-dark" colorScheme="dark" expand="lg">
+  <c-container [fluid]="true" class="d-flex justify-content-end">
+    <c-button-group>
+      <button *ngIf="prices.length < 3" cButton color="light" class="mr-3" (click)="showNewPricingAddPopupEvent()">Add Pricing</button>
+      <button color="light" cButton disabled *ngIf="refreshLoadingSpinner">
+        <c-spinner aria-hidden="true" size="sm"></c-spinner>
+        Loading...
+      </button>
+      <button cButton color="light" *ngIf="!refreshLoadingSpinner" (click)="clickToRefreshLoadedService()">Refresh</button>
+    </c-button-group>
+  </c-container>
+</c-navbar>
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-6" *ngFor="let price of prices">
+      <div class="header_top_bar">
+        {{
+        price.state === 'INACTIVE' ? 'Inactive' : price.state === 'DELETED' ? 'Deleted' : 'Active'
+        }}
+      </div>
+      <div class="pricing-item box-shadow">
+        <img src="assets/shape/massage.png" alt="Pricing">
+        <h2>{{price.title}}</h2>
+        <ul>
+          <li *ngFor="let plan of price.plans">
+            <div class="content">
+              <h3>{{plan.title}} <span>${{plan.price}}</span></h3>
+              <p>{{plan.description}}</p>
+            </div>
+          </li>
+        </ul>
+        <c-button-group aria-label="Basic mixed styles example" role="group" class="text-center" style="width: 100%">
+          <button *ngIf="price.state === 'DELETED' || price.state === 'INACTIVE'" cButton color="secondary" variant="outline" (click)="updateToActive(price)">Active</button>
+          <button *ngIf="price.state === 'ACTIVE'" cButton color="secondary" variant="outline" (click)="updateToInactive(price)">Inactive</button>
+          <button cButton color="secondary" variant="outline" (click)="openDeletePopup(price)">Delete</button>
+        </c-button-group>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

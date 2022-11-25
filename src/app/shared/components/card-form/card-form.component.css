@@ -1,0 +1,225 @@
+.modal {
+  display: block !important;
+}
+
+.close {
+  color: #fff;
+;
+}
+
+.modal-content {
+  background: none;
+  border: none;
+}
+
+.modal-body {
+  padding: 50px 40px;
+  padding-top: 40px;
+}
+
+.modal-content {
+  background: #392247 !important;
+}
+
+.login-html .sign-in,
+.login-html .sign-up,
+.login-form .group .check {
+  display: none;
+}
+
+.login-html .tab,
+.login-form .group .label,
+.login-form .group .button {
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.login-html .tab {
+  font-size: 22px;
+  margin-right: 15px;
+  padding-bottom: 5px;
+  margin: 0 15px 10px 0;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+  color: #a788c7;
+}
+
+.login-html .sign-in:checked+.tab,
+.login-html .sign-up:checked+.tab {
+  color: #fff;
+  border-color: #66427b;
+}
+
+.login-form {
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.login-form .group {
+  margin-bottom: 15px;
+}
+
+.login-form .group .label,
+.login-form .group .input,
+.login-form .group .button {
+  width: 100%;
+  color: #fff;
+  display: block;
+}
+
+.login-form .group .input,
+.login-form .group .button {
+  border: none;
+  padding: 15px 20px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, .1);
+}
+
+.login-form .group input[data-type="password"] {
+  text-security: circle;
+  -webkit-text-security: circle;
+}
+
+.login-form .group .label {
+  color: #aaa;
+  font-size: 12px;
+}
+
+.login-form .group .button {
+  background: #66427b;
+}
+
+.login-form .group label .icon {
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  position: relative;
+  display: inline-block;
+  background: rgba(255, 255, 255, .1);
+}
+
+.login-form .group label .icon:before,
+.login-form .group label .icon:after {
+  content: '';
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  transition: all .2s ease-in-out 0s;
+}
+
+.login-form .group label .icon:before {
+  left: 3px;
+  width: 5px;
+  bottom: 6px;
+  transform: scale(0) rotate(0);
+}
+
+.login-form .group label .icon:after {
+  top: 6px;
+  right: 0;
+  transform: scale(0) rotate(0);
+}
+
+.foot-lnk a {
+  color: #fff;
+}
+
+.login-form .group .check:checked+label {
+  color: #fff;
+}
+
+.login-form .group .check:checked+label .icon {
+  background: #66427b;
+}
+
+.login-form .group .check:checked+label .icon:before {
+  transform: scale(1) rotate(45deg);
+}
+
+.login-form .group .check:checked+label .icon:after {
+  transform: scale(1) rotate(-45deg);
+}
+
+.login-html .sign-in:checked+.tab+.sign-up+.tab+.login-form .sign-in-htm {
+  transform: rotate(0);
+}
+
+.login-html .sign-up:checked+.tab+.login-form .sign-up-htm {
+  transform: rotate(0);
+}
+
+.hr {
+  height: 2px;
+  margin: 60px 0 50px 0;
+  background: rgba(255, 255, 255, .2);
+}
+
+.foot-lnk {
+  text-align: center;
+}
+
+.btn-group,
+.btn-group-vertical {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.btn.btn-primary {
+  width: 100%;
+  background-color: #392247;
+  border-color: #fff;
+  border-radius: 30px !important;
+  padding: 10px 0px;
+  margin: 0px 5px;
+}
+
+.active_btn {
+  background-color: #fff !important;
+  color: #392247 !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
+  box-shadow: none !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+  border-color: transparent;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+  box-shadow: none !important;
+}
+
+.hr {
+  height: 2px;
+  margin: 30px 0 30px 0;
+  background: rgba(255, 255, 255, .1);
+}
+div#exampleModal {
+  background: #3922479e;
+  z-index: 999999;
+}
+.login-form {
+  margin: 20px auto;
+}
+.form-group label {
+  color: #fff;
+}
+.center > button {
+  width: 100%;
+  margin-top: 35px;
+  background: #fff !important;
+  border: #fff;
+  border-radius: 0px;
+  padding: 13px 0px;
+  text-transform: uppercase;
+  color: #392247;
+  font-weight: 700;
+}

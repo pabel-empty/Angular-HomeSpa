@@ -1,0 +1,119 @@
+<!-- Element Directive -->
+<ng-template appPopupBox></ng-template>
+<header>
+  <!-- top bar  -->
+  <div class="top_bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="right_top_bar">
+            <div class="search position-relative">
+              <input aria-describedby="basic-addon1"
+                     aria-label="Username"
+                     cFormControl
+                     placeholder="Search People..."
+                     type="text"
+                     #searchByNameInput
+                     (focusin)="beauticianSearchedListOpen = true"
+              />
+              <div class="extra_close_layer" (click)="beauticianSearchedListOpen = false" *ngIf="beauticianSearchedListOpen"></div>
+              <div class="searched_lists" *ngIf="beauticianSearchedListOpen">
+                <!--Users View Component-->
+                <ng-container *ngIf="users.length !== 0; else usersEmpty">
+                  <!--  User Table-->
+                  <table cTable hover>
+                    <tbody >
+                    <tr *ngFor="let user of users">
+                      <a href="#" class="search_user_view">
+                        <td width="20%" cAlign="middle">
+                          <div [ngStyle]="userProfilePic">
+                            <img [ngStyle]="{'width': '100%'}"
+                                 src="{{user.image}}"
+                                 alt="">
+                          </div>
+                        </td>
+                        <td width="40%" cAlign="middle">{{user.firstName}} {{user.lastName}}</td>
+                        <td width="40%" cAlign="middle">{{user.userType === 'BEAUTICIAN' ? 'Beautician' : user.userType === 'THERAPISTS' ? 'Therapists' : 'User' }}</td>
+                      </a>
+                    </tr>
+
+                    </tbody>
+                  </table>
+                </ng-container>
+                <ng-template #usersEmpty>
+                  <div class="not_found_user">
+                    <h4>Search people for your business</h4>
+                  </div>
+                </ng-template>
+                <!--Users View Component-->
+              </div>
+            </div>
+
+            <div class="user_thumbnail_profile_box" *ngIf="authenticated">
+              <a (click)="profileViewList = !profileViewList" class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownMenuLink" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="https://homespa.bioadmin.com/assets/lg_page-1_img01.jpg" width="40" height="40" class="rounded-circle">
+                <span class="online_activation"></span>
+              </a>
+              <div *ngIf="profileViewList" class="dropdown-menu user_profile_dp_down_menu"
+                   aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" [routerLink]="['./my-account']">Dashboard</a>
+                <a class="dropdown-item" href="javascript:void(0)">Profile</a>
+                <a class="dropdown-item" href="javascript:void(0)">My Services</a>
+                <a class="dropdown-item" href="javascript:void(0)">Payment</a>
+                <a class="dropdown-item" href="javascript:void(0)">Settings</a>
+                <a class="dropdown-item" href="javascript:void(0)" (click)="logOutUser()">Log Out</a>
+              </div>
+            </div>
+
+            <a *ngIf="!authenticated" (click)="openForm()" data-toggle="modal" class="ml-2" data-target="#exampleModal"><i
+                class="fas fa-sign-in-alt"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end top bar -->
+  <!-- navbar -->
+  <nav id="navbar_top" class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/home']">
+        <img src="assets/logo.png">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/services']">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/prices']">Prices</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/therapists']">Therapists</a>
+          </li>
+<!--          <li class="nav-item dropdown">-->
+<!--            <a class="nav-link dropdown-toggle">-->
+<!--              Member-->
+<!--            </a>-->
+<!--            <div class="dropdown-menu">-->
+<!--              <a class="dropdown-item" style="color: #72448d" [routerLink]="['/therapist-login']">Therapist Login</a>-->
+<!--              <a class="dropdown-item" style="color: #72448d;" [routerLink]="['/therapist-register']">Therapist-->
+<!--                Registration</a>-->
+<!--            </div>-->
+<!--          </li>-->
+<!--          <li class="nav-item book_now">-->
+<!--            <a class="nav-link" [routerLink]="['book-now']">Book Now</a>-->
+<!--          </li>-->
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- end navbar -->
+</header>

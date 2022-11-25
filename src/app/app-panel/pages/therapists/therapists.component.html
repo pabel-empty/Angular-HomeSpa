@@ -1,0 +1,15 @@
+<!-- App Banner or Hero Area -->
+<app-banner title="Our Therapists"></app-banner>
+
+<section class="experts-area">
+  <div class="container">
+    <div class="row">
+      <!--Start single item member-->
+      <div class="col-md-4" *ngFor="let user of users">
+        <app-therapists-card [user]="user"></app-therapists-card>
+      </div>
+      <!--End single item member-->
+    </div>
+  </div>
+
+</section>

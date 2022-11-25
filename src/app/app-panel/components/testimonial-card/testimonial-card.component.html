@@ -1,0 +1,29 @@
+<div class="testimonial-one__single">
+  <div class="testimonial-one__single-inner">
+    <div class="testimonial-one__shape-1">
+      <img src="assets/testimonials/testimonial-one-shape-1.png" alt="">
+    </div>
+    <div class="testimonial-one__client-info">
+      <div class="testimonial-one__client-img-box">
+        <img src="assets/testimonials/testimonial-1-1.jpg" alt="">
+        <div class="testimonial-one__quote">
+          <img src="assets/testimonials/testimonial-1-quote.png" alt="">
+        </div>
+      </div>
+      <div class="testimonial-one__client-content">
+<!--        <div class="testimonial-one__client-review">-->
+<!--          <i class="fa fa-star" *ngIf="review.rating"></i>-->
+<!--          <i class="fa fa-star"></i>-->
+<!--          <i class="fa fa-star"></i>-->
+<!--          <i class="fa fa-star"></i>-->
+<!--          <i class="fa fa-star"></i>-->
+<!--        </div>-->
+        <star-rating [starType]="'svg'" [rating]="2.63"></star-rating>
+        <div class="testimonial-one__client-details">
+          <h3 class="testimonial-one__client-name">{{review.name!}}</h3>
+        </div>
+      </div>
+    </div>
+    <p class="testimonial-one__text">{{review.description!}}</p>
+  </div>
+</div>

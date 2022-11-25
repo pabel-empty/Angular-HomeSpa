@@ -1,0 +1,57 @@
+:host {
+  .legend {
+    small {
+      font-size: x-small;
+    }
+  }
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #eceef3;
+  border-radius: .75rem;
+}
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.5rem 1.5rem;
+  color: #525f7f;
+}
+.border-0 {
+  border-width: 0 !important;
+}
+.shadow {
+  box-shadow: 0px 3px 3px -1px rgba(10,22,70,.1),0px 0px 1px 0px rgba(10,22,70,.06) !important;
+}
+.font-semibold {
+  font-weight: 500 !important;
+}
+.text-sm {
+  font-size: 0.875rem !important;
+}
+.mb-2 {
+  margin-bottom: .5rem !important;
+}
+.font-bold {
+  font-weight: 600 !important;
+}
+.icon-shape {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: .375rem;
+  width: 3rem;
+  height: 3rem;
+}
+.text-lg {
+  font-size: 1.25rem !important;
+}
+span.badge.badge-pill.bg-soft-success.text-success.me-2 {
+  background: rgb(0, 204, 136);
+}

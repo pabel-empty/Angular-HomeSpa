@@ -1,0 +1,56 @@
+<div class="loading_container" *ngIf="loadingForPaymentGettingPaymentInfo">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<!-- Element Directive -->
+<ng-template appPopupBox></ng-template>
+
+<section class="payment">
+  <div class="container">
+    <div class="save-card-form front-popup">
+      <div class="after_submit_message text-center" *ngIf="submitted">
+        <div class="alert alert-success text-center" role="alert">
+          Your appointment has been submitted
+        </div>
+        <button (click)="backToHomePage()" class="payment_btn mt-4">
+          Back to Home
+        </button>
+      </div>
+      <div class="user-data" *ngIf="!submitted">
+<!--        <h3> Your Registration is Successful </h3>-->
+        <h4> Please provide your payment info. We will not charge you until the beautician accepts the booking.
+        </h4>
+
+        <div class="paymentPlaceholder">
+<!--          <div class="alert alert-success text-center" role="alert">-->
+<!--            Your have already added payment information-->
+<!--          </div>-->
+          <p class="price"><span>Service Price :</span> <span>${{beauticianInfo.price.$numberDecimal}}</span></p>
+          <p class="price"><span>Service duration :</span> <span>1 Hr</span></p>
+          <p class="price"><span>Selected date time :</span> <span>{{beauticianAvailableDate}}</span></p>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Your card will be charged by 10% of the service
+              amount when the beautician accepts the booking</label>
+          </div>
+
+
+          <button (click)="paymentSubmit()" class="payment_btn">
+            Payment Submit
+          </button>
+<!--          <p> </p>-->
+<!--          <div class="cell example example4" id="example-4" data-secret="">-->
+<!--            <form style="width: 500px;" id="setup-form" data-secret="">-->
+<!--              <div id="card-element"></div>-->
+<!--              -->
+<!--            </form>-->
+<!--          </div>-->
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,65 @@
+.contact_here_name {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.contact_here_name label {
+  font-size: 18px;
+  font-weight: 300;
+  color: #2a2d2c;
+  display: block;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  font-family: 'Vidaloka', serif;
+}
+
+.contact_here_name .name {
+  position: relative;
+}
+
+.contact_here_name i {
+  position: absolute;
+  color: #72448d;
+  top: 0px;
+  left: 13px;
+  z-index: 1;
+  font-size: 16px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+  background-color: #fff;
+  color: #72448d;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0px;
+  border: 1px solid #72448d;
+  border-radius: 5px;
+  height: 50px;
+  padding: 3px 40px;
+  width: 100%;
+}
+
+textarea {
+  height: 200px;
+  width: 100%;
+  padding: 15px 20px;
+}
+
+.contact-btn a {
+  color: #fff;
+  background: #72448d;
+  border: 1px solid #72448d;
+  padding: 10px 40px;
+  width: auto;
+  transition: all 0.3s;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 5px;
+  text-transform: capitalize;
+  font-weight: 300;
+}

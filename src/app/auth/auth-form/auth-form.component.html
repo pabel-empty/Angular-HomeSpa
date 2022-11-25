@@ -1,0 +1,98 @@
+<div class="modal" id="exampleModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="login-wrap">
+          <div class="login-html">
+            <div class="btn-group">
+              <button [class]="isLoginSide ? 'btn btn-primary active_btn': 'btn btn-primary'"
+                      (click)="toggleLoginSide('LOGIN')">Login</button>
+              <button [class]="!isLoginSide ? 'btn btn-primary active_btn': 'btn btn-primary'"
+                      (click)="toggleLoginSide('SIGN_IN')">Register</button>
+            </div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="login-form">
+                <ng-container *ngIf="isLoginSide; else signUp">
+                  <div class="sign-in-htm">
+                    <div class="group">
+                      <label for="email" class="label">Email</label>
+                      <input id="email" type="text" class="input" formControlName="email">
+                    </div>
+                    <div class="group">
+                      <label for="password" class="label">Password</label>
+                      <input id="password" type="password" class="input" data-type="password" formControlName="password">
+                    </div>
+                    <!--                  <div class="group">-->
+                    <!--                    <input id="check" type="checkbox" class="check" checked>-->
+                    <!--                    <label for="check"><span class="icon"></span> Keep me Signed in</label>-->
+                    <!--                  </div>-->
+                    <div class="group">
+                      <input type="submit" class="button" value="Sign In">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                      <a href="#forgot">Forgot Password?</a>
+                    </div>
+                  </div>
+                </ng-container>
+
+
+                <ng-template #signUp>
+                  <div class="sign-up-htm">
+                    <div class="group">
+                      <label for="firstName" class="label">First Name</label>
+                      <input formControlName="firstName" id="firstName" type="text" class="input">
+                    </div>
+                    <div class="group">
+                      <label for="lastName" class="label">Last Name</label>
+                      <input formControlName="lastName" id="lastName" type="text" class="input">
+                    </div>
+                    <div class="group">
+                      <label for="username" class="label">Username</label>
+                      <input formControlName="username" id="username" type="text" class="input">
+                    </div>
+                    <div class="group">
+                      <label for="email2" class="label">Email Address</label>
+                      <input formControlName="email" id="email2" type="email" class="input">
+                    </div>
+                    <div class="group">
+                      <label for="password2" class="label">Password</label>
+                      <input formControlName="password" id="password2" type="password" class="input" data-type="password">
+                    </div>
+                    <div class="form-group">
+                      <fieldset id="setC">
+                        <div class="gender_box">
+                          <input id="male" type="radio" name="gender" value="male" [checked]="true" (change)="onItemChange($event)">
+                            <label for="male">Male</label><br>
+                        </div>
+                        <div class="gender_box">
+                          <input id="female" type="radio" name="gender" value="female" (change)="onItemChange($event)">
+                            <label for="female">Female</label><br>
+                        </div>
+                      </fieldset>
+                    </div>
+<!--                    <div class="group">-->
+<!--                      <label for="pass" class="label">Repeat Password</label>-->
+<!--                      <input id="pass" type="password" class="input" data-type="password">-->
+<!--                    </div>-->
+
+                    <br>
+                    <div class="group">
+                      <button [disabled]="form.invalid" (click)="signUpForm()" type="button" class="button">Sign Up</button>
+                    </div>
+                  </div>
+                </ng-template>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

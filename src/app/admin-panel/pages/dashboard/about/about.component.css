@@ -1,0 +1,12 @@
+textarea.form-control {
+  height: 100px !important;
+}
+.btn_group.btn-group {
+  width: 200px;
+}
+img.card-img-top {
+  width: 410px;
+}
+p.card-title {
+  font-size: 18px;
+}

@@ -1,0 +1,613 @@
+<div class="container bootstrap snippets">
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-4">
+      <div class="panel rounded shadow">
+        <div class="panel-body">
+          <div class="inner-all">
+            <ul class="list-unstyled">
+              <li class="text-center">
+                <img data-no-retina="" class="img-circle img-responsive img-bordered-primary" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="John Doe">
+              </li>
+              <li class="text-center">
+                <h4 class="text-capitalize">Rasel Khan</h4>
+                <p class="text-muted text-capitalize">Beautician</p>
+              </li>
+              <li>
+                <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus beatae blanditiis cum ea eaque, earum est eum eveniet ex facere fuga ipsa ipsam, labore minima, quam quas ut vel voluptates?</h3>
+              </li>
+            </ul>
+            <div class="panel-body no-padding rounded">
+              <ul class="list-group no-margin">
+                <li class="list-group-item"><i class="fa fa-envelope mr-3"></i> rasel@gmail.com</li>
+                <li class="list-group-item"><i class="fa fa-globe mr-3"></i> www.rasel.com</li>
+                <li class="list-group-item"><i class="fa fa-phone mr-3"></i> +6281 903 xxx xxx</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.panel -->
+
+    </div>
+    <div class="col-lg-9 col-md-9 col-sm-8">
+
+      <div class="user_dashboard shadow">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <button [class]="tab === 'DASHBOARD' ? 'nav-link active':'nav-link'" (click)="tabs('DASHBOARD')">Dashboard</button>
+          </li>
+          <li class="nav-item">
+            <button [class]="tab === 'PROFILE' ? 'nav-link active':'nav-link'" (click)="tabs('PROFILE')">Profile Settings</button>
+          </li>
+          <li class="nav-item">
+            <button [class]="tab === 'NOTIFICATIONS' ? 'nav-link active':'nav-link'" class="nav-link" (click)="tabs('NOTIFICATIONS')">Notifications</button>
+          </li>
+          <li class="nav-item">
+            <button [class]="tab === 'CUSTOMERS' ? 'nav-link active':'nav-link'" class="nav-link" (click)="tabs('CUSTOMERS')">Customers</button>
+          </li>
+          <li class="nav-item">
+            <button [class]="tab === 'ACTIVITIES' ? 'nav-link active':'nav-link'" class="nav-link" (click)="tabs('ACTIVITIES')">Activities Log</button>
+          </li>
+          <li class="nav-item">
+            <button [class]="tab === 'SERVICES' ? 'nav-link active':'nav-link'" class="nav-link" (click)="tabs('SERVICES')">My Services</button>
+          </li>
+          <li class="nav-item">
+            <button [class]="tab === 'PAYMENTS' ? 'nav-link active':'nav-link'" class="nav-link" (click)="tabs('PAYMENTS')">Payments</button>
+          </li>
+          <li class="nav-item">
+            <button [class]="tab === 'ACCOUNT' ? 'nav-link active':'nav-link'" class="nav-link" (click)="tabs('ACCOUNT')">Account</button>
+          </li>
+        </ul><!-- Tab panes -->
+        <div class="tab-content_">
+
+          <div *ngIf="tab === 'DASHBOARD'" class="tab-pane active">
+              <div class="welcome">
+                <div class="content rounded-3 p-3">
+                  <h1 class="fs-3">Welcome to Dashboard</h1>
+                  <p class="mb-0">Rasel Khan, welcome to your awesome dashboard!</p>
+                </div>
+              </div>
+              <section class="statis mt-4 text-center">
+                <div class="row">
+                  <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <div class="box p-3">
+                      <i class="fas fa-eye"></i>
+                      <h3>5,154</h3>
+                      <p class="lead">Profile Views</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <div class="box p-3">
+                      <i class="fas fa-user"></i>
+                      <h3>245</h3>
+                      <p class="lead">Customers</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+                    <div class="box p-3">
+                      <i class="fas fa-shopping-cart"></i>
+                      <h3>5,154</h3>
+                      <p class="lead">Service sales</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-lg-3">
+                    <div class="box p-3">
+                      <i class="fas fa-exchange-alt"></i>
+                      <h3>$5,154</h3>
+                      <p class="lead">Transactions</p>
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+            <section class="statis mt-4">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="dashboard_section_title">
+                    <h4>Workstreams in Progress</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="mainbod">
+                    <div class="box">
+                    <div class="image">
+                      <img src="https://homespa.bioadmin.com/assets/services/faicial.jpg" alt="">
+                    </div>
+                    <div class="wrap3">
+                      <div class="content">
+                        <h3>Waxing</h3>
+                      </div>
+                      <div class="wrap2container">
+                        <div class="wrap2">
+                          <div class="Ratings">
+                            <p class="black">Total Sold : <span class="black">17</span></p>
+                            <p class="black">Price : <span class="black">$170</span></p>
+                            <div class="ratings_position">
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                              28 reviews
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="mainbod">
+                    <div class="box">
+                      <div class="image">
+                        <img src="https://homespa.bioadmin.com/assets/services/faicial.jpg" alt="">
+                      </div>
+                      <div class="wrap3">
+                        <div class="content">
+                          <h3>Massage</h3>
+                        </div>
+                        <div class="wrap2container">
+                          <div class="wrap2">
+                            <div class="Ratings">
+                              <p class="black">Total Sold : <span class="black">17</span></p>
+                              <p class="black">Price : <span class="black">$170</span></p>
+                              <div class="ratings_position">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                28 reviews
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mainbod">
+                    <div class="box">
+                      <div class="image">
+                        <img src="https://homespa.bioadmin.com/assets/services/faicial.jpg" alt="">
+                      </div>
+                      <div class="wrap3">
+                        <div class="content">
+                          <h3>Face Mockup</h3>
+                        </div>
+                        <div class="wrap2container">
+                          <div class="wrap2">
+                            <div class="Ratings">
+                              <p class="black">Total Sold : <span class="black">17</span></p>
+                              <p class="black">Price : <span class="black">$170</span></p>
+                              <div class="ratings_position">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                28 reviews
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+          <div *ngIf="tab === 'PROFILE'" class="tab-pane">
+            <div class="personal_info">
+              <h4>Personal Information</h4>
+              <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  First Name
+                  <button class="btn btn-primary">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Last Name
+                  <button class="btn btn-primary">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Username
+                  <button class="btn btn-primary">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Phone Number
+                  <button class="btn btn-primary">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Religion
+                  <button class="btn btn-primary">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Country
+                  <button class="btn btn-primary">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Address 1
+                  <button class="btn btn-primary">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Social Links
+                  <button class="btn btn-primary">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <div class="personal_info">
+              <h4>Service Information</h4>
+              <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Availability
+                  <button class="btn btn-primary">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Price (One Day)
+                  <button class="btn btn-primary">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Experience
+                  <button class="btn btn-primary">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div *ngIf="tab === 'NOTIFICATIONS'" class="tab-pane">
+            <div class="notification_panel">
+
+              <div class="custom-social-proof">
+                <div class="custom-notification">
+                  <div class="custom-notification-container">
+                    <div class="custom-notification-image-wrapper">
+                      <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    </div>
+                    <div class="custom-notification-content-wrapper">
+                      <p class="custom-notification-content">
+                        <strong>Jewel Hasan</strong> sent you a request for an appointment, you quickly accept the email.
+                        <small>1 hour ago</small>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="custom-close"></div>
+                </div>
+              </div>
+              <div class="custom-social-proof">
+                <div class="custom-notification">
+                  <div class="custom-notification-container">
+                    <div class="custom-notification-image-wrapper">
+                      <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    </div>
+                    <div class="custom-notification-content-wrapper">
+                      <p class="custom-notification-content">
+                        <strong>Jewel Hasan</strong> sent you a request for an appointment, you quickly accept the email.
+                        <small>1 hour ago</small>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="custom-close"></div>
+                </div>
+              </div>
+              <div class="custom-social-proof">
+                <div class="custom-notification">
+                  <div class="custom-notification-container">
+                    <div class="custom-notification-image-wrapper">
+                      <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    </div>
+                    <div class="custom-notification-content-wrapper">
+                      <p class="custom-notification-content">
+                        <strong>Jewel Hasan</strong> sent you a request for an appointment, you quickly accept the email.
+                        <small>1 hour ago</small>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="custom-close"></div>
+                </div>
+              </div>
+              <div class="custom-social-proof">
+                <div class="custom-notification">
+                  <div class="custom-notification-container">
+                    <div class="custom-notification-image-wrapper">
+                      <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    </div>
+                    <div class="custom-notification-content-wrapper">
+                      <p class="custom-notification-content">
+                        <strong>Jewel Hasan</strong> sent you a request for an appointment, you quickly accept the email.
+                        <small>1 hour ago</small>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="custom-close"></div>
+                </div>
+              </div>
+              <div class="custom-social-proof">
+                <div class="custom-notification">
+                  <div class="custom-notification-container">
+                    <div class="custom-notification-image-wrapper">
+                      <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    </div>
+                    <div class="custom-notification-content-wrapper">
+                      <p class="custom-notification-content">
+                        <strong>Jewel Hasan</strong> sent you a request for an appointment, you quickly accept the email.
+                        <small>1 hour ago</small>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="custom-close"></div>
+                </div>
+              </div>
+              <div class="custom-social-proof">
+                <div class="custom-notification">
+                  <div class="custom-notification-container">
+                    <div class="custom-notification-image-wrapper">
+                      <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    </div>
+                    <div class="custom-notification-content-wrapper">
+                      <p class="custom-notification-content">
+                        <strong>Jewel Hasan</strong> sent you a request for an appointment, you quickly accept the email.
+                        <small>1 hour ago</small>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="custom-close"></div>
+                </div>
+              </div>
+              <div class="custom-social-proof">
+                <div class="custom-notification">
+                  <div class="custom-notification-container">
+                    <div class="custom-notification-image-wrapper">
+                      <img src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    </div>
+                    <div class="custom-notification-content-wrapper">
+                      <p class="custom-notification-content">
+                        <strong>Jewel Hasan</strong> sent you a request for an appointment, you quickly accept the email.
+                        <small>1 hour ago</small>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="custom-close"></div>
+                </div>
+              </div>
+
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div *ngIf="tab === 'CUSTOMERS'" class="tab-pane">
+            <div class="drop__list" id="drop-items">
+
+              <div class="drop__card">
+                <div class="drop__data">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" class="drop__img">
+                  <div>
+                    <h1 class="drop__name">Farid Vatani</h1>
+                    <span class="drop__profession">rasel@gmail.com</span>
+                  </div>
+                </div>
+
+                <div>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star-half-alt"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star-half-alt"></i></a>
+                </div>
+              </div>
+              <div class="drop__card">
+                <div class="drop__data">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" class="drop__img">
+                  <div>
+                    <h1 class="drop__name">Farid Vatani</h1>
+                    <span class="drop__profession">rasel@gmail.com</span>
+                  </div>
+                </div>
+
+                <div>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star-half-alt"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star-half-alt"></i></a>
+                </div>
+              </div>
+              <div class="drop__card">
+                <div class="drop__data">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" class="drop__img">
+                  <div>
+                    <h1 class="drop__name">Farid Vatani</h1>
+                    <span class="drop__profession">rasel@gmail.com</span>
+                  </div>
+                </div>
+
+                <div>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star-half-alt"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star-half-alt"></i></a>
+                </div>
+              </div>
+              <div class="drop__card">
+                <div class="drop__data">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" class="drop__img">
+                  <div>
+                    <h1 class="drop__name">Farid Vatani</h1>
+                    <span class="drop__profession">rasel@gmail.com</span>
+                  </div>
+                </div>
+
+                <div>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star-half-alt"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star-half-alt"></i></a>
+                </div>
+              </div>
+              <div class="drop__card">
+                <div class="drop__data">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" class="drop__img">
+                  <div>
+                    <h1 class="drop__name">Farid Vatani</h1>
+                    <span class="drop__profession">rasel@gmail.com</span>
+                  </div>
+                </div>
+
+                <div>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star-half-alt"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star-half-alt"></i></a>
+                </div>
+              </div>
+              <div class="drop__card">
+                <div class="drop__data">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" class="drop__img">
+                  <div>
+                    <h1 class="drop__name">Farid Vatani</h1>
+                    <span class="drop__profession">rasel@gmail.com</span>
+                  </div>
+                </div>
+
+                <div>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star-half-alt"></i></a>
+                  <a href="#" class="drop__social"><i class="fas fa-star-half-alt"></i></a>
+                </div>
+              </div>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div *ngIf="tab === 'ACTIVITIES'" class="tab-pane">
+            <p>Second Panel</p>
+          </div>
+          <div *ngIf="tab === 'SERVICES'" class="tab-pane">
+            <p>Second Panel</p>
+          </div>
+          <div *ngIf="tab === 'PAYMENTS'" class="tab-pane">
+            <p>Second Panel</p>
+          </div>
+          <div *ngIf="tab === 'ACCOUNT'" class="tab-pane">
+            <div class="account_area">
+              <div class="card bg-light py-3">
+                <h4>Change Password</h4>
+                <form class="card-body">
+                  <div class="form-group">
+                    <label class="mb-1" for="currentPassword">Current Password</label>
+                    <div>
+                      <input class="form-control required" id="currentPassword" name="currentPassword" type="text" autocomplete="off" placeholder="Current Password">
+
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="mt-3 mb-1" for="password">New Password</label>
+                    <div>
+                      <input class="form-control required" type="password" id="password" name="password" autocomplete="off" placeholder="New Password">
+                    </div>
+                  </div>
+
+                  <label class="mt-3 mb-1" for="password2">Confirm Password</label>
+                  <input class="form-control required" type="password" id="password2" name="password2" autocomplete="off" placeholder="Confirm Password">
+
+                  <button class="btn btn-primary mt-3">Submit Password</button>
+                </form>
+              </div>
+              <div class="card bg-light mt-4 py-3">
+                <h4>Change Email</h4>
+                <form class="card-body">
+                  <div class="form-group">
+                    <label class="mb-1" for="changeEmail">Email</label>
+                    <div>
+                      <input class="form-control required" id="changeEmail" name="changeEmail" type="text" autocomplete="off" value="" placeholder="Email">
+
+                    </div>
+                  </div>
+                  <button class="btn btn-primary mt-3">Submit Email</button>
+                </form>
+              </div>
+
+              <div class="card bg-light mt-4 py-3">
+                <h4>My Account</h4>
+                <div class="drop__card drop__card_my">
+                  <div class="drop__data">
+                    <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="drop__img">
+                    <div>
+                      <h1 class="drop__name">Rasel Khan</h1>
+                      <span class="drop__profession">rasel@gmail.com</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <button class="btn btn-danger">Delete Permanently</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+.front-popup {
+  width: calc(100% - 0px);
+  max-width: 1200px;
+  height: auto;
+  background-color: #fff;
+  padding: 45px 40px;
+  border-radius: 5px;
+  z-index: 110;
+  transition: .3s;
+}
+
+.user-data>h3 {
+  font-family: 'Vidaloka', serif;
+  font-size: 30px;
+  background: #72448d;
+  padding: 8px 0px;
+  border-radius: 30px;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #fff;
+  letter-spacing: 1px;
+  word-spacing: 6px;
+  font-weight: 300;
+}
+
+.user-data>h4 {
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 0px 50px;
+}
+
+.front-popup .close_btn {
+  border: 1px solid #ddd;
+  background-color: transparent;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  color: #333;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.paymentPlaceholder {
+  border: 1px solid #ddd;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.price {
+  margin-bottom: 8px;
+  padding: 4px 0px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+#card-button {
+  color: #fff;
+  background: #72448d;
+  border: 1px solid #72448d;
+  padding: 5px 25px;
+  width: auto;
+  transition: all 0.3s;
+  display: inline-block;
+  font-size: 17px;
+  border-radius: 5px;
+  text-transform: capitalize;
+  font-weight: 400;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.form-check {
+  margin-top: 30px;
+}
+.payment_btn {
+  color: #fff;
+  background: #72448d;
+  border: 1px solid #72448d;
+  padding: 5px 25px;
+  width: auto;
+  transition: all .3s;
+  display: inline-block;
+  font-size: 17px;
+  border-radius: 5px;
+  text-transform: capitalize;
+  font-weight: 400;
+  cursor: pointer;
+  margin-top: 30px;
+}
+.loading_container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background: #72448d8c;
+}
+.spinner-border {
+  left: 47%;
+  position: absolute;
+  top: 47%;
+}

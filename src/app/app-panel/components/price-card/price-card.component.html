@@ -1,0 +1,13 @@
+<div class="pricing-item box-shadow">
+  <img src={{image}} alt="Pricing">
+  <h2>{{title}}</h2>
+  <ul>
+    <li *ngFor="let plan of plans">
+      <div class="content">
+        <h3>{{plan.title}} <span>${{plan.price}}</span></h3>
+        <p>{{plan.description}}</p>
+      </div>
+    </li>
+  </ul>
+  <a routerLink="/appointment" class="default-btn">Booking Now <i class="flaticon-booking"></i></a>
+</div>

@@ -1,0 +1,52 @@
+<div class="modal" id="exampleModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="login-wrap">
+          <div class="login-html">
+            <form id="PaymentForm" [formGroup]="cardForm">
+
+              <div class="payment-errors bg-danger"></div>
+                <div class="form-group">
+                  <label>
+                    <span>Credit Card Number</span>
+                  </label>
+                  <input formControlName="cardNumber" type="text" size="20" data-stripe="number" class="form-control" placeholder="XXXXXXXXXXXXXXXX" value="" />
+                </div>
+
+                <div class="form-group form-group">
+                  <label>
+                    <span>CVC Code:</span>
+                  </label>
+                  <input formControlName="cardCvc" type="text" size="4" data-stripe="cvc" class="form-control" placeholder="XXX"/>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label>
+                      <span>Expiry<small> (MM/YY)</small>:</span>
+                    </label>
+                  </div>
+                  <div class="input-group">
+                    <input formControlName="expMonth" type="text" size="2" data-stripe="exp-month" class="form-control" placeholder="00"/>
+                    <div class="input-group-addon">/</div>
+                    <input formControlName="expYear" type="text" size="2" data-stripe="exp-year" class="form-control" placeholder="00"/>
+                  </div>
+                </div>
+
+              <div class="center">
+                <button (click)="submitCardInformation()" type="submit" class="btn btn-success">Submit</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

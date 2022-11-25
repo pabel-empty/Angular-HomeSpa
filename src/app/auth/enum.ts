@@ -1,0 +1,6 @@
+export enum UserType {
+  ADMIN = 'SUPER_ADMIN',
+  USER = 'USER',
+  BEAUTICIAN = 'BEAUTICIAN',
+  THERAPISTS = 'THERAPISTS',
+}

@@ -1,0 +1,89 @@
+.our_services {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-one-shape-2 {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  mix-blend-mode: luminosity;
+}
+
+.testimonial-one-shape-2 img {
+  width: auto;
+  mix-blend-mode: luminosity;
+  opacity: .15;
+}
+
+.testimonial-one-shape-3 {
+  position: absolute;
+  bottom: -90px;
+  left: 0;
+  mix-blend-mode: luminosity;
+}
+
+.testimonial-one-shape-3 img {
+  width: auto;
+  mix-blend-mode: luminosity;
+  opacity: .15;
+}
+
+.pagination-area {
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.pagination-area .page-numbers {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  color: var(--bodyColor);
+  background-color: transparent;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  margin-left: 3px;
+  margin-right: 3px;
+  font-size: 20px;
+  border-radius: 50px;
+  border: 1px solid #eee;
+}
+
+.pagination-area .page-numbers:hover {
+  background-color: #72448d;
+  color: #fff !important;
+}
+
+.pagination-area .page-numbers i {
+  position: relative;
+  font-size: 22px;
+  line-height: normal;
+  top: 5px;
+}
+.custom-pagination > div {
+  background: #fff;
+  margin: 3px;
+  width: 30px;
+  text-align: center;
+  box-shadow: 0px 2px 4px 2px #ddd;
+  height: 30px;
+  border-radius: 5px;
+  line-height: 30px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: 400;
+}
+.custom-pagination > div > a > span {
+  display: block;
+}
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+}
+.current {
+  background: #4f5d73 !important;
+  color: #fff;
+}

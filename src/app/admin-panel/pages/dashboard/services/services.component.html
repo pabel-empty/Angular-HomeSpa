@@ -1,0 +1,306 @@
+<!--Modal-->
+<c-modal [size]="'lg'" [(visible)]="singleServiceViewVisible" #verticallyCenteredModal alignment="center" (visibleChange)="handleSingleServiceViewVisibleChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Service Details</h5>
+    <button (click)="clearSingleServiceViewPopupEvent()" cButtonClose></button>
+  </c-modal-header>
+
+  <c-modal-body>
+    <ng-container *ngIf="service; else serviceEmpty">
+      <c-card>
+        <img cCardImg="top" src="https://coreui.io/angular/docs/assets/img/angular.jpg">
+        <c-card-body>
+          <table cTable class="m-0">
+            <tbody>
+            <tr>
+              <td><strong class="w_25%">Title </strong>{{service.title}}</td>
+            </tr>
+            <tr>
+              <td><strong class="w_25%">Category Name </strong>{{service.category}}</td>
+            </tr>
+            <tr>
+              <td><strong class="w_25%">State </strong>{{service.state === 'ACTIVE' ? 'Active' : service.state === 'INACTIVE' ? 'Inactive' : 'Deleted'}}
+              </td>
+            </tr>
+            <tr>
+              <td><strong class="w_25%">Description </strong>{{service.description}}
+              </td>
+            </tr>
+            <tr>
+              <td><strong class="w_25%">Create Time </strong>{{service.createdAt}}
+              </td>
+            </tr>
+            <tr>
+              <td><strong class="w_25%">Last Update </strong>{{service.updatedAt}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </c-card-body>
+      </c-card>
+    </ng-container>
+    <ng-template #serviceEmpty class="text-center">
+      <button cButton class="m-1" disabled>
+        <c-spinner aria-hidden="true" size="sm" variant="grow"></c-spinner>
+        Loading...
+      </button>
+    </ng-template>
+  </c-modal-body>
+
+  <c-modal-footer>
+  </c-modal-footer>
+</c-modal>
+<!--Modal-->
+
+
+
+
+<!--Review Delete Popup-->
+<c-modal [visible]="visible" (visibleChange)="handleLiveLinkDeleteChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Service Delete Confirmation</h5>
+    <button (click)="closePopupEvent()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body><strong style="width: 100%;">Are you want to sure delete ?</strong></c-modal-body>
+  <c-modal-footer>
+    <button cButton color="primary" (click)="permanentlyDelete()">Delete Confirm</button>
+  </c-modal-footer>
+</c-modal>
+<!--Review Delete Popup-->
+
+<!--Service Edit Popup Box-->
+<c-modal [visible]="serviceEditPopupVisible" [size]="'lg'" (visibleChange)="handleServiceEditPopupVisibleChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Service Update</h5>
+    <button (click)="serviceEditPopupVisible = false; clearNewServiceForm()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <c-card class="mb-4">
+      <c-card-body>
+        <form [formGroup]="serviceForm">
+          <c-input-group class="mb-3">
+            <input #fileType cFormControl id="inputGroupFile02" type="file" (change)="handleFileInput($event)"/>
+            <c-form-feedback *ngIf="fileRequired" style="display: block !important;">
+              Image file is required *
+            </c-form-feedback>
+          </c-input-group>
+          <c-input-group class="mb-3">
+            <input aria-describedby="basic-addon1"
+                   aria-label="name"
+                   cFormControl
+                   placeholder="add title"
+                   formControlName="title"
+            />
+            <c-form-feedback *ngIf="(serviceForm.get('title')?.touched || serviceForm.get('title')?.dirty) && serviceForm.get('title')!.errors?.['required']" style="display: block !important;">
+              Title is required *
+            </c-form-feedback>
+            <c-form-feedback *ngIf="serviceForm.get('title')!.errors?.['minlength']" style="display: block !important;">
+              Title must be at least 3 characters long.
+            </c-form-feedback>
+          </c-input-group>
+          <c-input-group class="mb-3">
+            <input aria-describedby="basic-addon2"
+                   aria-label="sub-title"
+                   cFormControl
+                   placeholder="add sub title"
+                   formControlName="category"
+            />
+            <c-form-feedback *ngIf="(serviceForm.get('category')?.touched || serviceForm.get('category')?.dirty) && serviceForm.get('category')!.errors?.['required']" style="display: block !important;">
+              Category is required *
+            </c-form-feedback>
+            <c-form-feedback *ngIf="serviceForm.get('category')!.errors?.['minlength']" style="display: block !important;">
+              Category must be at least 3 characters long.
+            </c-form-feedback>
+          </c-input-group>
+
+          <c-input-group class="mb-4">
+            <textarea formControlName="description" aria-label="With textarea" cFormControl placeholder="Enter your perfect description for your website"></textarea>
+            <c-form-feedback *ngIf="(serviceForm.get('description')?.touched || serviceForm.get('description')?.dirty) && serviceForm.get('description')!.errors?.['required']" style="display: block !important;">
+              Description is required *
+            </c-form-feedback>
+          </c-input-group>
+
+          <c-button-group class="btn_group">
+            <button [disabled]="serviceForm.invalid" cButton *ngIf="!loadingSpinnerService" color="dark" (click)="submitUpdatedService()">Update</button>
+            <button cButton *ngIf="loadingSpinnerService" disabled>
+              <c-spinner aria-hidden="true" size="sm"></c-spinner>
+              Loading...
+            </button>
+            <button *ngIf="!loadingSpinnerService" cButton color="light" (click)="clearNewServiceForm()">Clear</button>
+          </c-button-group>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-modal-body>
+</c-modal>
+<!--Service Edit Popup Box-->
+
+<!--Add New Service Popup-->
+<c-modal [visible]="addNewVisible" [size]="'lg'" (visibleChange)="addNewVisibleChanges($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Add New Service</h5>
+    <button (click)="closeNewServiceAddPopupEvent()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <c-card class="mb-4">
+      <c-card-body>
+        <form [formGroup]="serviceForm">
+          <c-input-group class="mb-3">
+            <input #fileType2 cFormControl id="inputGroupFile01" type="file" (change)="handleFileInput($event)"/>
+            <c-form-feedback *ngIf="fileRequired" style="display: block !important;">
+              Image file is required *
+            </c-form-feedback>
+          </c-input-group>
+          <c-input-group class="mb-3">
+            <input aria-describedby="basic-addon1"
+                   aria-label="name"
+                   cFormControl
+                   placeholder="add title"
+                   formControlName="title"
+            />
+            <c-form-feedback *ngIf="(serviceForm.get('title')?.touched || serviceForm.get('title')?.dirty) && serviceForm.get('title')!.errors?.['required']" style="display: block !important;">
+              Title is required *
+            </c-form-feedback>
+            <c-form-feedback *ngIf="serviceForm.get('title')!.errors?.['minlength']" style="display: block !important;">
+              Title must be at least 3 characters long.
+            </c-form-feedback>
+          </c-input-group>
+          <c-input-group class="mb-3">
+            <input aria-describedby="basic-addon2"
+                   aria-label="sub-title"
+                   cFormControl
+                   placeholder="add sub title"
+                   formControlName="category"
+            />
+            <c-form-feedback *ngIf="(serviceForm.get('category')?.touched || serviceForm.get('category')?.dirty) && serviceForm.get('category')!.errors?.['required']" style="display: block !important;">
+              Category is required *
+            </c-form-feedback>
+            <c-form-feedback *ngIf="serviceForm.get('category')!.errors?.['minlength']" style="display: block !important;">
+              Category must be at least 3 characters long.
+            </c-form-feedback>
+          </c-input-group>
+
+          <c-input-group class="mb-4">
+            <textarea formControlName="description" aria-label="With textarea" cFormControl placeholder="Enter your perfect description for your website"></textarea>
+            <c-form-feedback *ngIf="(serviceForm.get('description')?.touched || serviceForm.get('description')?.dirty) && serviceForm.get('description')!.errors?.['required']" style="display: block !important;">
+              Description is required *
+            </c-form-feedback>
+          </c-input-group>
+
+          <c-button-group class="btn_group">
+            <button [disabled]="serviceForm.invalid" cButton *ngIf="!loadingSpinnerService" color="dark" (click)="submitNewService()">Save</button>
+            <button cButton *ngIf="loadingSpinnerService" disabled>
+              <c-spinner aria-hidden="true" size="sm"></c-spinner>
+              Loading...
+            </button>
+            <button *ngIf="!loadingSpinnerService" cButton color="light" (click)="clearNewServiceForm()">Clear</button>
+          </c-button-group>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-modal-body>
+</c-modal>
+<!--Add New Service Popup-->
+
+
+
+<c-navbar class="bg-dark" colorScheme="dark" expand="lg">
+  <c-container [fluid]="true" class="d-flex justify-content-between">
+
+    <c-input-group class="mr-5">
+      <input cFormControl
+             placeholder="Search Services..."
+             type="text"
+             class="input-group-custom"
+             #searchService
+      />
+    </c-input-group>
+
+    <c-button-group>
+      <button cButton color="light" class="mr-3" (click)="isEditable = !isEditable">{{isEditable ? 'Close Edit' : 'Edit Services'}}</button>
+      <button cButton color="light" class="mr-3" (click)="showNewServiceAddPopupEvent()">Add Service</button>
+      <button color="light" cButton disabled *ngIf="refreshLoadingSpinner">
+        <c-spinner aria-hidden="true" size="sm"></c-spinner>
+        Loading...
+      </button>
+      <button cButton color="light" *ngIf="!refreshLoadingSpinner" (click)="clickToRefreshLoadedService()">Refresh</button>
+    </c-button-group>
+  </c-container>
+</c-navbar>
+
+
+<ng-container *ngIf="services.length !== 0; else servicesNotFound">
+  <!--  User Table-->
+  <table cTable hover>
+    <thead cTableColor="dark">
+    <tr>
+      <th scope="col" width="15%">Image</th>
+      <th scope="col" width="15%">Title</th>
+      <th scope="col" width="10%">Category</th>
+      <th scope="col" width="30%">Description</th>
+      <th scope="col" width="10%">State</th>
+      <th scope="col" width="30%">Actions</th>
+    </tr>
+    </thead>
+    <tbody >
+
+    <tr *ngFor="let service of services | paginate : config">
+      <td width="15%" cAlign="middle">
+        <div [ngStyle]="userProfilePic">
+          <img [ngStyle]="{'width': '100%'}"
+               src="{{service.image}}"
+               alt="">
+        </div>
+      </td>
+      <td cAlign="middle" width="15%">{{service.title}}</td>
+      <td cAlign="middle" width="10%">{{service.category}}</td>
+      <td cAlign="middle" width="30%">{{service.description}}</td>
+      <td cAlign="middle" width="10%">{{service.state === 'ACTIVE' ? 'Active' : service.state === 'DELETED' ? 'Deleted' : 'Inactive' }}</td>
+      <td cAlign="middle" width="30%">
+        <button *ngIf="isEditable" cButton color="secondary" variant="outline" class="mr-3" (click)="showUpEditPopup(service)">Edit</button>
+        <c-button-group aria-label="Basic mixed styles example" role="group" *ngIf="!isEditable">
+          <button cButton color="secondary" variant="outline" (click)="showService(service)">Show</button>
+          <button *ngIf="service.state === 'DELETED' || service.state === 'INACTIVE'" cButton color="secondary" variant="outline" (click)="updateToActive(service)">Active</button>
+          <button *ngIf="service.state === 'ACTIVE'" cButton color="secondary" variant="outline" (click)="updateToInactive(service)">Inactive</button>
+          <button *ngIf="service.state === 'ACTIVE' || service.state === 'INACTIVE'" cButton color="secondary" variant="outline" (click)="updateToDeleted(service)">Temporary Delete</button>
+          <button *ngIf="service.state === 'DELETED'" cButton color="secondary" variant="outline" (click)="openDeletePopup(service._id)">Permanently Delete</button>
+        </c-button-group>
+
+      </td>
+    </tr>
+
+
+    </tbody>
+  </table>
+
+  <!--NGX PAGINATION-->
+  <div class="has-text-centered">
+    <pagination-template #p="paginationApi" [id]="config.id!" (pageChange)="onPageChange($event)">
+      <div class="custom-pagination">
+        <div class="pagination-previous" [class.disabled]="p.isFirstPage()">
+          <a *ngIf="!p.isFirstPage()" (click)="p.previous()"> < </a>
+        </div>
+
+        <div *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+          <a (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+            <span>{{ page.label }}</span>
+          </a>
+          <div *ngIf="p.getCurrent() === page.value">
+            <span>{{ page.label }}</span>
+          </div>
+        </div>
+
+        <div class="pagination-next" [class.disabled]="p.isLastPage()">
+          <a *ngIf="!p.isLastPage()" (click)="p.next()"> > </a>
+        </div>
+      </div>
+    </pagination-template>
+  </div>
+  <!--NGX PAGINATION-->
+</ng-container>
+<ng-template #servicesNotFound>
+  <div class="not_found_user">
+    <h4>Service Not Found</h4>
+  </div>
+</ng-template>
+

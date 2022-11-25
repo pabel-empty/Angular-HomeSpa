@@ -1,0 +1,45 @@
+<div class="user-data-container front-popup">
+  <button class="close_btn" (click)="close()">X</button>
+  <div class="user-data">
+    <h3> Book Appointment </h3>
+    <h4> We will not charge you until the beautician accepts the booking !! </h4>
+    <form class="registration-form" [formGroup]="appointmentForm">
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input formControlName="name" name="name" type="text" class="form-control" id="cardholder-name" aria-describedby="emailHelp"
+          placeholder="Enter Name">
+        <small class="form-text text-muted">Your name is required</small>
+      </div>
+      <div class="form-group">
+        <label>Your Home Address *</label>
+        <input formControlName="address" name="address" type="text" class="form-control" id="cardholder-address" aria-describedby="emailHelp"
+          placeholder="Enter Address">
+        <small class="form-text text-muted">Your home address is required</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Your Email address *</label>
+        <input formControlName="email" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+          else. Confirmation message will go to this email</small>
+      </div>
+<!--      <div class="form-group">-->
+<!--        <label for="exampleInputPassword1">Set a Password</label>-->
+<!--        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
+<!--      </div>-->
+<!--      <div class="form-group">-->
+<!--        <fieldset id="setC">-->
+<!--          <div class="gender_box">-->
+<!--            <input id="male" type="radio" name="gender" value="male" [checked]="true" (change)="onItemChange($event)">-->
+<!--              <label for="male">Male</label><br>-->
+<!--          </div>-->
+<!--          <div class="gender_box">-->
+<!--            <input id="female" type="radio" name="gender" value="female" (change)="onItemChange($event)">-->
+<!--              <label for="female">Female</label><br>-->
+<!--          </div>-->
+<!--        </fieldset>-->
+<!--      </div>-->
+      <button [disabled]="appointmentForm.invalid" id="register-member" class="btn btn-primary" type="submit" (click)="userNavigate()"> Next </button>
+    </form>
+  </div>
+</div>

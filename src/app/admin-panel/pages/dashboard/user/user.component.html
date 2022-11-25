@@ -1,0 +1,24 @@
+<div class="row position-relative">
+  <div class="col-lg-11">
+    <c-input-group class="mb-3">
+      <input aria-describedby="basic-addon1"
+             aria-label="Username"
+             cFormControl
+             placeholder="Search User..."
+             type="text"
+             #searchByNameInput
+      />
+    </c-input-group>
+  </div>
+  <div class="col-lg-1">
+    <c-spinner color="dark" *ngIf="searchLoadingSpinner"></c-spinner>
+  </div>
+</div>
+
+  <!--Users View Component-->
+<app-users-view
+  [users]="users"
+  [loaded]="loaded"
+  [userType]="'USER'">
+</app-users-view>
+<!--Users View Component-->

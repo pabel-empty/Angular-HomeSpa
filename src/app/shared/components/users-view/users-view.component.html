@@ -1,0 +1,361 @@
+<!--Modal-->
+<c-modal #modalXl id="modalXl" size="xl" [(visible)]="visible" #verticallyCenteredModal alignment="center">
+  <c-modal-header>
+    <h5 cModalTitle>User Personal Details</h5>
+    <button [cModalToggle]="verticallyCenteredModal.id" cButtonClose></button>
+  </c-modal-header>
+
+  <c-modal-body *ngIf="user">
+    <div class="profile_view_container">
+      <div class="profile-header">
+        <div class="profile-img">
+          <img src="https://wl-brightside.cf.tsp.li/resize/728x/jpg/f6e/ef6/b5b68253409b796f61f6ecd1f1.jpg" width="200" alt="Profile Image">
+        </div>
+        <div class="profile-nav-info">
+          <h3 class="user-name">{{user.firstName}} {{user.lastName}}</h3>
+          <div class="address">
+            <p class="state">{{user.userType === 'USER' ? 'General User' : user.userType === 'BEAUTICIAN' ? 'Beautician' : 'Therapists'}}</p>
+          </div>
+          <div class="address" *ngIf="user.country">
+            <p id="state" class="state">{{user.country}},</p>
+            <span id="country" class="country">{{user.country_state}}</span>
+          </div>
+        </div>
+
+        <div class="social_links">
+          <div class="profile-option">
+            <div class="notification">
+              <i class="fa fa-bell"></i>
+            </div>
+          </div>
+          <div class="profile-option">
+            <div class="notification">
+              <i class="fa fa-bell"></i>
+            </div>
+          </div>
+          <div class="profile-option">
+            <div class="notification">
+              <i class="fa fa-bell"></i>
+            </div>
+          </div>
+          <div class="profile-option">
+            <div class="notification">
+              <i class="fa fa-bell"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-bd">
+        <div class="left-side">
+          <div class="profile-side">
+            <p class="mobile-no"><i class="fa fa-phone"></i> {{user.phoneNumber ? user.phoneNumber : 'N/A'}}</p>
+            <p class="user-mail"><i class="fa fa-envelope"></i> {{user.email}}</p>
+            <div class="user-bio">
+              <p class="bio">
+                Lorem ipsum dolor sit amet, hello how consectetur adipisicing elit. Sint consectetur provident magni yohoho consequuntur, voluptatibus ghdfff exercitationem at quis similique. Optio, amet!
+              </p>
+            </div>
+            <div class="profile-btn">
+              <button class="chatbtn" id="chatBtn"><i class="fa fa-stop-circle"></i> Disable</button>
+              <button class="createbtn" id="Create-post"><i class="fa fa-trash-alt"></i> Delete</button>
+            </div>
+            <div class="user-rating">
+              <h3 class="rating">4.5</h3>
+              <div class="rate">
+                <div class="star-outer">
+                  <div class="star-inner">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </div>
+                <span class="no-of-user-rate"><span>123</span>&nbsp;&nbsp;reviews</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="right-side">
+          <c-nav variant="tabs">
+            <c-nav-item>
+              <a [active]="true" [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="0" cNavLink>
+                Personal Info
+              </a>
+            </c-nav-item>
+            <c-nav-item *ngIf="user.userType !== 'USER'">
+              <a [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="1" cNavLink>
+                Schedule
+              </a>
+            </c-nav-item>
+          </c-nav>
+          <c-tab-content #tabContent="cTabContent" [activeTabPaneIdx]="1" style="border-bottom: none !important;">
+            <c-tab-pane>
+              <table cTable class="m-0">
+                <tbody>
+                <tr>
+                  <td><strong class="w_25%">Username : </strong>{{user.username}}</td>
+                </tr>
+                <tr>
+                  <td><strong class="w_25%">Gender : </strong>Male</td>
+                </tr>
+                <tr>
+                  <td><strong class="w_25%">Religion : </strong>Islam</td>
+                </tr>
+                <tr>
+                  <td><strong class="w_25%">User Type : </strong>{{user.userType === 'USER' ? 'General User' : user.userType === 'BEAUTICIAN' ? 'Beautician' : 'Therapists'}}
+                  </td>
+                </tr>
+                <tr *ngIf="user.exp_level">
+                  <td><strong class="w_25%">Experience Level : </strong>{{user.exp_level === 'ENTRY' ? 'Entry Level' : user.exp_level === 'INTERMEDIATE' ? 'Intermediate Level' : 'Expert Level'}}
+                  </td>
+                </tr>
+                <tr *ngIf="user.availability">
+                  <td><strong class="w_25%">Availability : </strong>{{user.availability}}</td>
+                </tr>
+                <tr *ngIf="user.price">
+                  <td><strong class="w_25%">Price : </strong>{{user.price}}</td>
+                </tr>
+                <tr *ngIf="user.address1">
+                  <td><strong class="w_25%">Address : </strong>{{user.address1}}</td>
+                </tr>
+                </tbody>
+              </table>
+            </c-tab-pane>
+            <c-tab-pane>
+              <div class="calendar">
+                <div class="outer">
+                  <table>
+                    <thead class="cus_tableHeader">
+                    <tr>
+                      <th> Fri
+                      </th>
+                      <th>
+                        Sat </th>
+                      <th>Sun </th>
+                      <th>Mon</th>
+                      <th>Tue</th>
+                      <th>Wed</th>
+                      <th>Thu</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td data-ts="1659085200" [class]="user.schedule.friday.nineAm ? 'c_s1 available':'c_s1'"><span>09:00 AM</span></td>
+                      <td data-ts="1659171600" [class]="user.schedule.saturday.nineAm ? 'c_s1 available':'c_s1'"><span>09:00 AM</span></td>
+                      <td data-ts="1659258000" [class]="user.schedule.sunday.nineAm ? 'c_s1 available':'c_s1'"><span>09:00 AM</span></td>
+                      <td data-ts="1659344400" [class]="user.schedule.monday.nineAm ? 'c_s1 available':'c_s1'"><span>09:00 AM</span></td>
+                      <td data-ts="1659430800" [class]="user.schedule.tuesday.nineAm ? 'c_s1 available':'c_s1'"><span>09:00 AM</span>
+                      </td>
+                      <td data-ts="1659517200" [class]="user.schedule.wednesday.nineAm ? 'c_s1 available':'c_s1'"><span>09:00 AM</span></td>
+                      <td data-ts="1659603600" [class]="user.schedule.thursday.nineAm ? 'c_s1 available':'c_s1'"><span>09:00 AM</span></td>
+                    </tr>
+                    <tr>
+                      <td data-ts="1659085200" [class]="user.schedule.friday.tenAm ? 'c_s1 available':'c_s1'"><span>10:00 AM</span></td>
+                      <td data-ts="1659171600" [class]="user.schedule.saturday.tenAm ? 'c_s1 available':'c_s1'"><span>10:00 AM</span></td>
+                      <td data-ts="1659258000" [class]="user.schedule.sunday.tenAm ? 'c_s1 available':'c_s1'"><span>10:00 AM</span></td>
+                      <td data-ts="1659344400" [class]="user.schedule.monday.tenAm ? 'c_s1 available':'c_s1'"><span>10:00 AM</span></td>
+                      <td data-ts="1659430800" [class]="user.schedule.tuesday.tenAm ? 'c_s1 available':'c_s1'"><span>10:00 AM</span>
+                      </td>
+                      <td data-ts="1659517200" [class]="user.schedule.wednesday.tenAm ? 'c_s1 available':'c_s1'"><span>10:00 AM</span></td>
+                      <td data-ts="1659603600" [class]="user.schedule.thursday.tenAm ? 'c_s1 available':'c_s1'"><span>10:00 AM</span></td>
+                    </tr>
+                    <tr>
+                      <td data-ts="1659085200" [class]="user.schedule.friday.elevenAm ? 'c_s1 available':'c_s1'"><span>11:00 AM</span></td>
+                      <td data-ts="1659171600" [class]="user.schedule.saturday.elevenAm ? 'c_s1 available':'c_s1'"><span>11:00 AM</span></td>
+                      <td data-ts="1659258000" [class]="user.schedule.sunday.elevenAm ? 'c_s1 available':'c_s1'"><span>11:00 AM</span></td>
+                      <td data-ts="1659344400" [class]="user.schedule.monday.elevenAm ? 'c_s1 available':'c_s1'"><span>11:00 AM</span></td>
+                      <td data-ts="1659430800" [class]="user.schedule.tuesday.elevenAm ? 'c_s1 available':'c_s1'"><span>11:00 AM</span>
+                      </td>
+                      <td data-ts="1659517200" [class]="user.schedule.wednesday.elevenAm ? 'c_s1 available':'c_s1'"><span>11:00 AM</span></td>
+                      <td data-ts="1659603600" [class]="user.schedule.thursday.elevenAm ? 'c_s1 available':'c_s1'"><span>11:00 AM</span></td>
+                    </tr>
+                    <tr>
+                      <td data-ts="1659085200" [class]="user.schedule.friday.twelvePm ? 'c_s1 available':'c_s1'"><span>12:00 PM</span></td>
+                      <td data-ts="1659171600" [class]="user.schedule.saturday.twelvePm ? 'c_s1 available':'c_s1'"><span>12:00 PM</span></td>
+                      <td data-ts="1659258000" [class]="user.schedule.sunday.twelvePm ? 'c_s1 available':'c_s1'"><span>12:00 PM</span></td>
+                      <td data-ts="1659344400" [class]="user.schedule.monday.twelvePm ? 'c_s1 available':'c_s1'"><span>12:00 PM</span></td>
+                      <td data-ts="1659430800" [class]="user.schedule.tuesday.twelvePm ? 'c_s1 available':'c_s1'"><span>12:00 PM</span>
+                      </td>
+                      <td data-ts="1659517200" [class]="user.schedule.wednesday.twelvePm ? 'c_s1 available':'c_s1'"><span>12:00 PM</span></td>
+                      <td data-ts="1659603600" [class]="user.schedule.thursday.twelvePm ? 'c_s1 available':'c_s1'"><span>12:00 PM</span></td>
+                    </tr>
+                    <tr>
+                      <td data-ts="1659085200" [class]="user.schedule.friday.onePm ? 'c_s1 available':'c_s1'"><span>01:00 PM</span></td>
+                      <td data-ts="1659171600" [class]="user.schedule.saturday.onePm ? 'c_s1 available':'c_s1'"><span>01:00 PM</span></td>
+                      <td data-ts="1659258000" [class]="user.schedule.sunday.onePm ? 'c_s1 available':'c_s1'"><span>01:00 PM</span></td>
+                      <td data-ts="1659344400" [class]="user.schedule.monday.onePm ? 'c_s1 available':'c_s1'"><span>01:00 PM</span></td>
+                      <td data-ts="1659430800" [class]="user.schedule.tuesday.onePm ? 'c_s1 available':'c_s1'"><span>01:00 PM</span>
+                      </td>
+                      <td data-ts="1659517200" [class]="user.schedule.wednesday.onePm ? 'c_s1 available':'c_s1'"><span>01:00 PM</span></td>
+                      <td data-ts="1659603600" [class]="user.schedule.thursday.onePm ? 'c_s1 available':'c_s1'"><span>01:00 PM</span></td>
+                    </tr>
+                    <tr>
+                      <td data-ts="1659085200" [class]="user.schedule.friday.twoPm ? 'c_s1 available':'c_s1'"><span>02:00 PM</span></td>
+                      <td data-ts="1659171600" [class]="user.schedule.saturday.twoPm ? 'c_s1 available':'c_s1'"><span>02:00 PM</span></td>
+                      <td data-ts="1659258000" [class]="user.schedule.sunday.twoPm ? 'c_s1 available':'c_s1'"><span>02:00 PM</span></td>
+                      <td data-ts="1659344400" [class]="user.schedule.monday.twoPm ? 'c_s1 available':'c_s1'"><span>02:00 PM</span></td>
+                      <td data-ts="1659430800" [class]="user.schedule.tuesday.twoPm ? 'c_s1 available':'c_s1'"><span>02:00 PM</span>
+                      </td>
+                      <td data-ts="1659517200" [class]="user.schedule.wednesday.twoPm ? 'c_s1 available':'c_s1'"><span>02:00 PM</span></td>
+                      <td data-ts="1659603600" [class]="user.schedule.thursday.twoPm ? 'c_s1 available':'c_s1'"><span>02:00 PM</span></td>
+                    </tr>
+                    <tr>
+                      <td data-ts="1659085200" [class]="user.schedule.friday.threePm ? 'c_s1 available':'c_s1'"><span>03:00 PM</span></td>
+                      <td data-ts="1659171600" [class]="user.schedule.saturday.threePm ? 'c_s1 available':'c_s1'"><span>03:00 PM</span></td>
+                      <td data-ts="1659258000" [class]="user.schedule.sunday.threePm ? 'c_s1 available':'c_s1'"><span>03:00 PM</span></td>
+                      <td data-ts="1659344400" [class]="user.schedule.monday.threePm ? 'c_s1 available':'c_s1'"><span>03:00 PM</span></td>
+                      <td data-ts="1659430800" [class]="user.schedule.tuesday.threePm ? 'c_s1 available':'c_s1'"><span>03:00 PM</span>
+                      </td>
+                      <td data-ts="1659517200" [class]="user.schedule.wednesday.threePm ? 'c_s1 available':'c_s1'"><span>03:00 PM</span></td>
+                      <td data-ts="1659603600" [class]="user.schedule.thursday.threePm ? 'c_s1 available':'c_s1'"><span>03:00 PM</span></td>
+                    </tr>
+                    <tr>
+                      <td data-ts="1659085200" [class]="user.schedule.friday.fourPm ? 'c_s1 available':'c_s1'"><span>04:00 PM</span></td>
+                      <td data-ts="1659171600" [class]="user.schedule.saturday.fourPm ? 'c_s1 available':'c_s1'"><span>04:00 PM</span></td>
+                      <td data-ts="1659258000" [class]="user.schedule.sunday.fourPm ? 'c_s1 available':'c_s1'"><span>04:00 PM</span></td>
+                      <td data-ts="1659344400" [class]="user.schedule.monday.fourPm ? 'c_s1 available':'c_s1'"><span>04:00 PM</span></td>
+                      <td data-ts="1659430800" [class]="user.schedule.tuesday.fourPm ? 'c_s1 available':'c_s1'"><span>04:00 PM</span>
+                      </td>
+                      <td data-ts="1659517200" [class]="user.schedule.wednesday.fourPm ? 'c_s1 available':'c_s1'"><span>04:00 PM</span></td>
+                      <td data-ts="1659603600" [class]="user.schedule.thursday.fourPm ? 'c_s1 available':'c_s1'"><span>04:00 PM</span></td>
+                    </tr>
+                    <tr>
+                      <td data-ts="1659085200" [class]="user.schedule.friday.fivePm ? 'c_s1 available':'c_s1'"><span>05:00 PM</span></td>
+                      <td data-ts="1659171600" [class]="user.schedule.saturday.fivePm ? 'c_s1 available':'c_s1'"><span>05:00 PM</span></td>
+                      <td data-ts="1659258000" [class]="user.schedule.sunday.fivePm ? 'c_s1 available':'c_s1'"><span>05:00 PM</span></td>
+                      <td data-ts="1659344400" [class]="user.schedule.monday.fivePm ? 'c_s1 available':'c_s1'"><span>05:00 PM</span></td>
+                      <td data-ts="1659430800" [class]="user.schedule.tuesday.fivePm ? 'c_s1 available':'c_s1'"><span>05:00 PM</span>
+                      </td>
+                      <td data-ts="1659517200" [class]="user.schedule.wednesday.fivePm ? 'c_s1 available':'c_s1'"><span>05:00 PM</span></td>
+                      <td data-ts="1659603600" [class]="user.schedule.thursday.fivePm ? 'c_s1 available':'c_s1'"><span>05:00 PM</span></td>
+                    </tr>
+                    <tr>
+                      <td data-ts="1659085200" [class]="user.schedule.friday.sixPm ? 'c_s1 available':'c_s1'"><span>06:00 PM</span></td>
+                      <td data-ts="1659171600" [class]="user.schedule.saturday.sixPm ? 'c_s1 available':'c_s1'"><span>06:00 PM</span></td>
+                      <td data-ts="1659258000" [class]="user.schedule.sunday.sixPm ? 'c_s1 available':'c_s1'"><span>06:00 PM</span></td>
+                      <td data-ts="1659344400" [class]="user.schedule.monday.sixPm ? 'c_s1 available':'c_s1'"><span>06:00 PM</span></td>
+                      <td data-ts="1659430800" [class]="user.schedule.tuesday.sixPm ? 'c_s1 available':'c_s1'"><span>06:00 PM</span>
+                      </td>
+                      <td data-ts="1659517200" [class]="user.schedule.wednesday.sixPm ? 'c_s1 available':'c_s1'"><span>06:00 PM</span></td>
+                      <td data-ts="1659603600" [class]="user.schedule.thursday.sixPm ? 'c_s1 available':'c_s1'"><span>06:00 PM</span></td>
+                    </tr>
+                    <tr>
+
+                    </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </c-tab-pane>
+          </c-tab-content>
+
+        </div>
+      </div>
+    </div>
+  </c-modal-body>
+
+  <c-modal-footer>
+  </c-modal-footer>
+</c-modal>
+<!--Modal-->
+
+<ng-container *ngIf="!loaded; else usersExistsOrNot">
+  <p cPlaceholderAnimation="glow">
+    <span cCol="12" cPlaceholder cPlaceholderSize="lg"></span>
+  </p>
+  <p cPlaceholderAnimation="glow">
+    <span cCol="12" cPlaceholder cPlaceholderSize="lg"></span>
+  </p>
+  <p cPlaceholderAnimation="glow">
+    <span cCol="12" cPlaceholder cPlaceholderSize="lg"></span>
+  </p>
+  <p cPlaceholderAnimation="glow">
+    <span cCol="12" cPlaceholder cPlaceholderSize="lg"></span>
+  </p>
+  <p cPlaceholderAnimation="glow">
+    <span cCol="12" cPlaceholder cPlaceholderSize="lg"></span>
+  </p>
+  <p cPlaceholderAnimation="glow">
+    <span cCol="12" cPlaceholder cPlaceholderSize="lg"></span>
+  </p>
+</ng-container>
+<ng-template #usersExistsOrNot>
+  <ng-container *ngIf="users.length !== 0; else usersEmpty">
+    <!--  User Table-->
+    <table cTable hover>
+      <thead cTableColor="dark">
+      <tr>
+        <th scope="col" width="5%">Image</th>
+        <th scope="col" width="15%">Name</th>
+        <th scope="col" width="20%">Email</th>
+        <th scope="col" width="15%">Phone</th>
+        <th scope="col" width="15%">User Type</th>
+        <th scope="col" width="5%">State</th>
+        <th scope="col" width="35%">Actions</th>
+      </tr>
+      </thead>
+      <tbody >
+
+      <tr *ngFor="let user of users">
+        <td width="5%" cAlign="middle">
+          <div [ngStyle]="userProfilePic">
+            <img [ngStyle]="{'width': '100%'}"
+                 src="{{user.image}}"
+                 alt="">
+          </div>
+        </td>
+        <td cAlign="middle" width="15%">{{user.firstName}} {{user.lastName}}</td>
+        <td cAlign="middle" width="20%">{{user.email}}</td>
+        <td cAlign="middle" width="15%">{{user.phoneNumber === null ? 'N/A' : user.phoneNumber }}</td>
+        <td cAlign="middle" width="15%">{{user.userType === 'BEAUTICIAN' ? 'Beautician' : user.userType === 'THERAPISTS' ? 'Therapists' : 'User' }}</td>
+        <td cAlign="middle" width="5%">{{user.state === 'ACTIVE' ? 'Active' : user.state === 'DELETED' ? 'Deleted' : 'Disabled' }}</td>
+        <td cAlign="middle" width="35%">
+          <c-button-group aria-label="Basic mixed styles example" role="group">
+            <button (click)="showUser(user)" color="secondary" variant="outline" cButton>Show</button>
+            <button *ngIf="user.state === 'DELETED' || user.state === 'DISABLED'" cButton color="secondary" variant="outline" (click)="updateToActive(user)">Active</button>
+            <button *ngIf="user.state === 'ACTIVE'" cButton color="secondary" variant="outline" (click)="updateToDisabled(user)">Disable</button>
+            <button *ngIf="user.state === 'ACTIVE' || user.state === 'DISABLED'" cButton color="secondary" variant="outline" (click)="updateToDeleted(user)">Temporary Delete</button>
+            <button *ngIf="user.state === 'DELETED'" cButton color="secondary" variant="outline" (click)="permanentlyDelete(user)">Permanently Delete</button>
+          </c-button-group>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+    <!--  User Table-->
+
+    <!--  Pagination-->
+<!--    <c-pagination *ngIf="users && users.length !== 0" align="end" aria-label="Page navigation example">-->
+<!--      <li cPageItem [disabled]="true">-->
+<!--        <a cPageLink [routerLink]>Previous</a>-->
+<!--      </li>-->
+<!--      <li cPageItem>-->
+<!--        <a cPageLink [routerLink]>1</a>-->
+<!--      </li>-->
+<!--      <li cPageItem>-->
+<!--        <a cPageLink [routerLink]>2</a>-->
+<!--      </li>-->
+<!--      <li cPageItem>-->
+<!--        <a cPageLink [routerLink]>3</a>-->
+<!--      </li>-->
+<!--      <li cPageItem>-->
+<!--        <a cPageLink [routerLink]>Next</a>-->
+<!--      </li>-->
+<!--    </c-pagination>-->
+    <!--  Pagination-->
+  </ng-container>
+  <ng-template #usersEmpty>
+    <div class="not_found_user">
+      <h4>No Users Found</h4>
+    </div>
+  </ng-template>
+</ng-template>
+

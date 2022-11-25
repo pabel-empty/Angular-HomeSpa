@@ -1,0 +1,133 @@
+/*=================================footer section=======================================*/
+.footer_section {
+  width: 100%;
+  padding: 70px 0px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.footer_box img {
+  width: 200px;
+  margin-bottom: 20px;
+
+}
+
+.footer_box p {
+  color: #5E5E5E;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 28px;
+  margin-bottom: 30px;
+}
+
+
+.footer_box .list-inline li {
+  display: inline-block;
+  padding-bottom: 13px;
+  list-style: none;
+  color: #cacaca;
+}
+
+.footer_box .list-inline li a {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #72448d;
+  color: #ffffff;
+  margin-right: 5px;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  font-size: 18px;
+}
+
+.footer_box .list-inline li a:hover {
+  background: #72448d;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+
+.footer_box h6 {
+  color: #000;
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: capitalize;
+  line-height: 24px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.mb-2,
+.my-2 {
+  margin-bottom: 17px !important;
+}
+
+.input-group-append button {
+  background: #72448d;
+  color: #fff;
+  transition: 0.5s;
+  margin-top: -1px;
+}
+
+.input-group-append button:hover {
+  background: #72448d;
+  color: #fff;
+  transition: 0.5s;
+}
+
+ul.list-unstyled {
+  margin-top: 20px;
+
+}
+
+ul.list-unstyled li a {
+  color: #5E5E5E;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin-bottom: 9px;
+  display: inline-block;
+}
+
+ul.list-unstyled li a i {
+  color: #fff;
+}
+
+ul.list-unstyled li a:hover {
+  color: #72448d;
+  text-decoration: underline;
+}
+
+.footer_bottom {
+  width: 100%;
+  padding: 20px;
+  background: #72448d;
+}
+
+.footer_bottom_content p {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+  margin-top: 7px;
+}
+
+.footer_bottom_content a {
+  color: #fff;
+  padding: 0px 10px;
+}
+
+/*===========================end footer=========================*/

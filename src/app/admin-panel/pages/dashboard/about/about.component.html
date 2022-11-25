@@ -1,0 +1,412 @@
+<!--Social Links Update Modal-->
+<c-modal [visible]="updateVisibleOfAbout" (visibleChange)="visibleChangeOfAbout($event)" size="xl">
+  <c-modal-header>
+    <h5 cModalTitle>Update the About Information</h5>
+  </c-modal-header>
+  <c-modal-body>
+    <form [formGroup]="aboutInfoFormGroup">
+      <c-input-group class="mb-3">
+        <input aria-describedby="basic-addon1"
+               aria-label="name"
+               cFormControl
+               placeholder="add title"
+               formControlName="title"
+        />
+      </c-input-group>
+      <c-input-group class="mb-3">
+        <input aria-describedby="basic-addon2"
+               aria-label="sub-title"
+               cFormControl
+               placeholder="add sub title"
+               formControlName="subtitle"
+        />
+      </c-input-group>
+
+      <c-input-group class="mb-4">
+        <textarea formControlName="description" aria-label="With textarea" cFormControl placeholder="Enter your perfect description for your website"></textarea>
+      </c-input-group>
+
+      <c-button-group class="btn_group">
+        <button cButton *ngIf="loadingSpinnerOfAbout" disabled>
+          <c-spinner aria-hidden="true" size="sm"></c-spinner>
+          Loading...
+        </button>
+        <button *ngIf="!loadingSpinnerOfAbout" cButton color="dark" (click)="updateAbout()">Update</button>
+        <button *ngIf="!loadingSpinnerOfAbout" cButton color="light" (click)="clearAboutInformation()">Clear</button>
+      </c-button-group>
+    </form>
+  </c-modal-body>
+  <c-modal-footer>
+    <button (click)="clearVisibleUpdatePopup()" cButton color="secondary">
+      Cancel
+    </button>
+  </c-modal-footer>
+</c-modal>
+<!--Social Links Update Modal-->
+
+
+
+<!--About Information Delete Popup-->
+<c-modal #aboutDeleteConfirm id="aboutDeleteConfirm">
+  <c-modal-header>
+    <h5 cModalTitle>About Delete Confirmation</h5>
+    <button [cModalToggle]="aboutDeleteConfirm.id" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body><strong>Are You Want to Sure Delete ?</strong></c-modal-body>
+  <c-modal-footer>
+    <button cButton color="primary" [cModalToggle]="aboutDeleteConfirm.id" (click)="deleteAboutInformation()">Delete Confirm</button>
+  </c-modal-footer>
+</c-modal>
+<!--About Information Delete Popup-->
+
+<!--======== This is for Create basic information of About The Website =========-->
+<ng-container *ngIf="about.length === 0; else aboutExists">
+  <c-card class="mb-4">
+    <c-card-header><h5 class="mb-0">Add Basic About Information</h5></c-card-header>
+    <c-card-body>
+      <form [formGroup]="aboutInfoFormGroup">
+          <c-input-group class="mb-3">
+            <input cFormControl id="inputGroupFile01" type="file" (change)="handleFileInput($event)"/>
+            <c-form-feedback *ngIf="fileRequired" style="display: block !important;">
+              Image file is required *
+            </c-form-feedback>
+          </c-input-group>
+          <c-input-group class="mb-3">
+            <input aria-describedby="basic-addon1"
+                   aria-label="name"
+                   cFormControl
+                   placeholder="add title"
+                   formControlName="title"
+            />
+            <c-form-feedback *ngIf="(aboutInfoFormGroup.get('title')?.touched || aboutInfoFormGroup.get('title')?.dirty) && aboutInfoFormGroup.get('title')!.errors?.['required']" style="display: block !important;">
+              Title is required *
+            </c-form-feedback>
+            <c-form-feedback *ngIf="aboutInfoFormGroup.get('title')!.errors?.['minlength']" style="display: block !important;">
+              Title must be at least 3 characters long.
+            </c-form-feedback>
+          </c-input-group>
+          <c-input-group class="mb-3">
+            <input aria-describedby="basic-addon2"
+                   aria-label="sub-title"
+                   cFormControl
+                   placeholder="add sub title"
+                   formControlName="subtitle"
+            />
+            <c-form-feedback *ngIf="(aboutInfoFormGroup.get('subtitle')?.touched || aboutInfoFormGroup.get('subtitle')?.dirty) && aboutInfoFormGroup.get('subtitle')!.errors?.['required']" style="display: block !important;">
+              Sub title is required *
+            </c-form-feedback>
+            <c-form-feedback *ngIf="aboutInfoFormGroup.get('subtitle')!.errors?.['minlength']" style="display: block !important;">
+              Sub title must be at least 3 characters long.
+            </c-form-feedback>
+          </c-input-group>
+
+          <c-input-group class="mb-4">
+            <textarea formControlName="description" aria-label="With textarea" cFormControl placeholder="Enter your perfect description for your website"></textarea>
+            <c-form-feedback *ngIf="(aboutInfoFormGroup.get('description')?.touched || aboutInfoFormGroup.get('description')?.dirty) && aboutInfoFormGroup.get('description')!.errors?.['required']" style="display: block !important;">
+              Description is required *
+            </c-form-feedback>
+          </c-input-group>
+
+          <c-button-group class="btn_group">
+            <button [disabled]="aboutInfoFormGroup.invalid" cButton *ngIf="!loadingSpinnerOfAbout" color="dark" (click)="submitAboutInformation()">Save</button>
+            <button cButton *ngIf="loadingSpinnerOfAbout" disabled>
+              <c-spinner aria-hidden="true" size="sm"></c-spinner>
+              Loading...
+            </button>
+            <button *ngIf="!loadingSpinnerOfAbout" cButton color="light" (click)="clearAboutInformation()">Clear</button>
+          </c-button-group>
+      </form>
+    </c-card-body>
+  </c-card>
+</ng-container>
+<ng-template #aboutExists>
+  <c-card class="mb-4">
+    <c-card-header><h5 class="mb-0">Basic Information of SpaGram</h5></c-card-header>
+    <c-card-body>
+      <c-card>
+        <img class="mb-3" cCardImg="top" src="https://image.shutterstock.com/image-photo/head-shot-portrait-close-smiling-260nw-1714666150.jpg">
+        <c-card-body>
+          <table cTable class="m-0">
+            <tbody>
+            <tr>
+              <td><strong class="w_25%">Title : </strong>{{about[0].title}}</td>
+            </tr>
+            <tr>
+              <td><strong class="w_25%">Sub Title : </strong>{{about[0].subTitle}}</td>
+            </tr>
+            <tr>
+              <td><strong class="w_25%">Description : </strong>{{about[0].description}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <c-button-group class="btn_group mt-4">
+            <button cButton color="dark" (click)="visibleUpdateChangeOfAbout()">Edit</button>
+            <button cButton color="light" [cModalToggle]="aboutDeleteConfirm.id">Delete</button>
+          </c-button-group>
+        </c-card-body>
+      </c-card>
+    </c-card-body>
+  </c-card>
+</ng-template>
+
+
+
+
+
+<!--Social Links Delete Popup-->
+<c-modal [visible]="visible" (visibleChange)="handleLiveLinkDeleteChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Link Delete Confirmation</h5>
+    <button (click)="closeSocialLinkDeletePopup()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body><strong>Are you want to sure delete</strong></c-modal-body>
+  <c-modal-footer>
+    <button cButton color="primary" (click)="deleteSocialLinks()">Delete Confirm</button>
+  </c-modal-footer>
+</c-modal>
+<!--Social Links Delete Popup-->
+
+<!--Social Links Update Modal-->
+<c-modal [visible]="updateVisible" (visibleChange)="visibleChange($event)" size="xl">
+  <c-modal-header>
+    <h5 cModalTitle>Update Social Links</h5>
+  </c-modal-header>
+  <c-modal-body>
+    <form [formGroup]="socialLinksFormGroup">
+        <label cLabel for="facebook"><strong>Facebook url</strong></label>
+        <c-input-group class="mb-3">
+          <input [valid]="facebookVal!.errors?.['pattern'] ? false : true"
+                 cFormControl
+                 placeholder="add facebook link"
+                 type="text"
+                 formControlName="facebook"
+                 id="facebook"
+          />
+          <c-form-feedback [valid]="facebookVal!.errors?.['pattern']">
+            Please provide a valid url format
+          </c-form-feedback>
+        </c-input-group>
+
+        <label cLabel for="twitter"><strong>Twitter url</strong></label>
+        <c-input-group class="mb-3">
+          <input aria-label="twitter"
+                 [valid]="twitterVal!.errors?.['pattern'] ? false : true"
+                 cFormControl
+                 placeholder="add twitter link"
+                 formControlName="twitter"
+                 id="twitter"
+          />
+          <c-form-feedback [valid]="twitterVal!.errors?.['pattern']">
+            Please provide a valid url format
+          </c-form-feedback>
+        </c-input-group>
+
+      <label cLabel for="linkedin"><strong>Linkedin url</strong></label>
+        <c-input-group class="mb-3">
+          <input aria-label="linkedin"
+                 [valid]="linkedinVal!.errors?.['pattern'] ? false : true"
+                 cFormControl
+                 placeholder="add linkedin link"
+                 formControlName="linkedin"
+                 id="linkedin"
+          />
+          <c-form-feedback [valid]="linkedinVal!.errors?.['pattern']">
+            Please provide a valid url format
+          </c-form-feedback>
+        </c-input-group>
+
+      <label cLabel for="youtube"><strong>Youtube url</strong></label>
+        <c-input-group class="mb-3">
+          <input aria-label="youtube"
+                 [valid]="youtubeVal!.errors?.['pattern'] ? false : true"
+                 cFormControl
+                 placeholder="add youtube link"
+                 formControlName="youtube"
+                 id="youtube"
+          />
+          <c-form-feedback [valid]="youtubeVal!.errors?.['pattern']">
+            Please provide a valid url format
+          </c-form-feedback>
+        </c-input-group>
+
+      <label cLabel for="instagram"><strong>Instagram url</strong></label>
+        <c-input-group class="mb-4">
+          <input aria-label="instagram"
+                 [valid]="instagramVal!.errors?.['pattern'] ? false : true"
+                 cFormControl
+                 placeholder="add instagram link"
+                 formControlName="instagram"
+                 id="instagram"
+          />
+          <c-form-feedback [valid]="instagramVal!.errors?.['pattern']">
+            Please provide a valid url format
+          </c-form-feedback>
+        </c-input-group>
+
+        <c-button-group class="btn_group">
+          <button [disabled]="socialLinksFormGroup.invalid" cButton color="dark" *ngIf="!loadingSpinnerOfLinks" (click)="updateSocialLinks()">Update</button>
+          <button cButton *ngIf="loadingSpinnerOfLinks" disabled>
+            <c-spinner aria-hidden="true" size="sm"></c-spinner>
+            Loading...
+          </button>
+          <button cButton color="light" *ngIf="!loadingSpinnerOfLinks" (click)="clearSocialLinks()">Clear</button>
+        </c-button-group>
+    </form>
+  </c-modal-body>
+  <c-modal-footer>
+    <button (click)="clearVisibleUpdatePopup()" cButton color="secondary">
+      Cancel
+    </button>
+  </c-modal-footer>
+</c-modal>
+<!--Social Links Update Modal-->
+
+
+<!--This is for website social links-->
+<ng-container *ngIf="!socialLinks; else socialLinksExists">
+  <c-card>
+    <c-card-header><h5 class="mb-0">Add Social Links</h5></c-card-header>
+    <c-card-body>
+      <form [formGroup]="socialLinksFormGroup">
+        <ng-container *ngIf="!createNewAbout; else created">
+          <c-input-group class="mb-3">
+            <input [valid]="facebookVal!.errors?.['pattern'] ? false : true"
+                   cFormControl
+                   placeholder="add facebook link"
+                   type="text"
+                   formControlName="facebook"
+            />
+            <c-form-feedback [valid]="facebookVal!.errors?.['pattern']">
+              Please provide a valid url format
+            </c-form-feedback>
+          </c-input-group>
+
+
+          <c-input-group class="mb-3">
+            <input aria-label="twitter"
+                   [valid]="twitterVal!.errors?.['pattern'] ? false : true"
+                   cFormControl
+                   placeholder="add twitter link"
+                   formControlName="twitter"
+            />
+            <c-form-feedback [valid]="twitterVal!.errors?.['pattern']">
+              Please provide a valid url format
+            </c-form-feedback>
+          </c-input-group>
+          <c-input-group class="mb-3">
+            <input aria-label="linkedin"
+                   [valid]="linkedinVal!.errors?.['pattern'] ? false : true"
+                   cFormControl
+                   placeholder="add linkedin link"
+                   formControlName="linkedin"
+            />
+            <c-form-feedback [valid]="linkedinVal!.errors?.['pattern']">
+              Please provide a valid url format
+            </c-form-feedback>
+          </c-input-group>
+          <c-input-group class="mb-3">
+            <input aria-label="youtube"
+                   [valid]="youtubeVal!.errors?.['pattern'] ? false : true"
+                   cFormControl
+                   placeholder="add youtube link"
+                   formControlName="youtube"
+            />
+            <c-form-feedback [valid]="youtubeVal!.errors?.['pattern']">
+              Please provide a valid url format
+            </c-form-feedback>
+          </c-input-group>
+          <c-input-group class="mb-4">
+            <input aria-label="instagram"
+                   [valid]="instagramVal!.errors?.['pattern'] ? false : true"
+                   cFormControl
+                   placeholder="add instagram link"
+                   formControlName="instagram"
+            />
+            <c-form-feedback [valid]="instagramVal!.errors?.['pattern']">
+              Please provide a valid url format
+            </c-form-feedback>
+          </c-input-group>
+
+          <c-button-group class="btn_group">
+            <button [disabled]="socialLinksFormGroup.invalid" cButton color="dark" *ngIf="!loadingSpinnerOfLinks" (click)="saveSocialLinks()">Save</button>
+            <button cButton *ngIf="loadingSpinnerOfLinks" disabled>
+              <c-spinner aria-hidden="true" size="sm"></c-spinner>
+              Loading...
+            </button>
+            <button cButton color="light" *ngIf="!loadingSpinnerOfLinks" (click)="clearSocialLinks()">Clear</button>
+          </c-button-group>
+        </ng-container>
+      </form>
+
+      <ng-template #created>
+        <p>Created</p>
+      </ng-template>
+    </c-card-body>
+  </c-card>
+</ng-container>
+<ng-template #socialLinksExists>
+  <c-card>
+    <c-card-header><h5 class="mb-0">Social Websites Link</h5></c-card-header>
+    <c-card-body>
+      <table cTable class="m-0">
+        <tbody>
+          <tr>
+            <td><strong class="w_25%">Facebook : </strong>
+              <ng-container *ngIf="socialLinks.facebook; else naFacebook">
+                <a [href]="socialLinks.facebook" target="_blank">{{socialLinks.facebook}}</a>
+              </ng-container>
+              <ng-template #naFacebook>
+                Link not available
+              </ng-template>
+            </td>
+          </tr>
+          <tr>
+            <td><strong class="w_25%">Twitter : </strong>
+              <ng-container *ngIf="socialLinks.twitter; else naTwitter">
+                <a [href]="socialLinks.twitter" target="_blank">{{socialLinks.twitter}}</a>
+              </ng-container>
+              <ng-template #naTwitter>
+                Link not available
+              </ng-template>
+            </td>
+          </tr>
+          <tr>
+            <td><strong class="w_25%">Linkedin : </strong>
+              <ng-container *ngIf="socialLinks.linkedin; else naLinkedin">
+                <a [href]="socialLinks.linkedin" target="_blank">{{socialLinks.linkedin}}</a>
+              </ng-container>
+              <ng-template #naLinkedin>
+                Link not available
+              </ng-template>
+            </td>
+          </tr>
+          <tr>
+            <td><strong class="w_25%">Instagram : </strong>
+              <ng-container *ngIf="socialLinks.instagram; else naInstagram">
+              <a [href]="socialLinks.instagram" target="_blank">{{socialLinks.instagram}}</a>
+            </ng-container>
+              <ng-template #naInstagram>
+                Link not available
+              </ng-template>
+            </td>
+          </tr>
+          <tr>
+            <td><strong class="w_25%">Youtube : </strong>
+              <ng-container *ngIf="socialLinks.youtube; else naYoutube">
+                <a [href]="socialLinks.youtube" target="_blank">{{socialLinks.youtube}}</a>
+              </ng-container>
+              <ng-template #naYoutube>
+                Link not available
+              </ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <c-button-group class="btn_group mt-4" >
+        <button cButton color="dark" (click)="getValues()">Edit</button>
+        <button cButton color="light" (click)="visibleDeletePopup()">Delete</button>
+      </c-button-group>
+    </c-card-body>
+  </c-card>
+</ng-template>
+

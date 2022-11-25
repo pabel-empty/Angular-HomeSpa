@@ -1,0 +1,213 @@
+<!-- Element Directive -->
+<ng-template appPopupBox></ng-template>
+
+<!-- App Banner or Hero Area -->
+<app-banner title="SpaGram Home"></app-banner>
+
+<!-- App Book Service Section -->
+<section class="our_services section_padding">
+  <div class="testimonial-one-shape-2 float-bob-y">
+    <img src="assets/shape/shape-2.png" alt="">
+  </div>
+  <div class="testimonial-one-shape-3 float-bob-y">
+    <img src="assets/shape/shape-1.png" alt="">
+  </div>
+  <div class="full_page_overlay overlay"></div>
+  <app-section-title title="Book a Service"></app-section-title>
+  <!-- Section Title end-->
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <div class="button-group filters-button-group">
+          <button [class]="selectedCategory === 'all' ? 'button is-checked' : 'button'" (click)="allServices()">All</button>
+          <button [class]="selectedCategory === 'Hair' ? 'button is-checked' : 'button'" (click)="getHairStyle()">Hair Style</button>
+          <button [class]="selectedCategory === 'waxing' ? 'button is-checked' : 'button'" (click)="waxing()">Waxing</button>
+          <button [class]="selectedCategory === 'threading' ? 'button is-checked' : 'button'" (click)="threading()">Threading</button>
+          <button [class]="selectedCategory === 'rebounding' ? 'button is-checked' : 'button'" (click)="rebounding()">Rebounding</button>
+          <button [class]="selectedCategory === 'party-mackUp' ? 'button is-checked' : 'button'" (click)="partyMackUp()">Party MackUp</button>
+          <button [class]="selectedCategory === 'laser-treatment' ? 'button is-checked' : 'button'" (click)="laserTreatment()">Laser Treatment</button>
+          <button [class]="selectedCategory === 'facial' ? 'button is-checked' : 'button'" (click)="facial()">Facial</button>
+        </div>
+        <!--filter content start-->
+        <div class="filter_content">
+          <div class="row grid">
+            <ng-container *ngIf="services.length !== 0; else servicesNotFound">
+              <div class="col-lg-4 col-md-4" (click)="openPopupBox(service._id)" *ngFor="let service of services">
+                <app-service-card serviceTitle="{{service.title}}"
+                                  serviceDescription="{{service.description}}"
+                                  serviceImage="https://homespa.bioadmin.com/assets/services/faicial.jpg"></app-service-card>
+              </div>
+            </ng-container>
+            <ng-template #servicesNotFound>
+              <div class="not_found_user">
+                <h4>Service not available</h4>
+              </div>
+            </ng-template>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Clients choose   -->
+<section class="clients_choose_section">
+  <div class="container">
+    <!-- <span>
+        <img src="assets/images/logo-black.png">
+     </span> -->
+    <h1 class="section-head-left">Welcome</h1>
+    <div class="row clients_choose_row">
+      <div class="col-md-6 col-sm-6">
+        <div class="clients_choose_img">
+          <img src="https://homespa.bioadmin.com/assets/lg_page-1_img01.jpg">
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="clients_choose_content">
+          <h2>{{about[0].title}}</h2>
+          <h4>{{about[0].subTitle}}</h4>
+          <p>{{about[0].description}}</p>
+<!--          <a href="#">learn more</a>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end Clients choose  -->
+
+
+<!-- Areas we are -->
+<section class="areas_we_are">
+  <!-- Section Title start-->
+  <app-section-title title="Areas we are expertised in"></app-section-title>
+  <!-- Section Title end-->
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-3 col-sm-6" *ngFor="let service of services; let i = index">
+        <div class="areas_box" *ngIf="i<=3">
+          <div class="areas_img">
+            <img src="assets/services/waxing.jpg">
+          </div>
+          <div class="areas_content">
+            <h4>{{service.title}}</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- end Areas we are -->
+
+
+<!-- counter section -->
+<section class="counter-area" style="background-image: url(assets/floral-bg-parallax.jpg);">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-3 col-lg-3 col-md-3 mb-30">
+        <div class="single-counter text-center">
+          <span class="count">{{totalGeneralUserCount}}</span>
+          <div class="border_1"><i class="fa fa-leaf text-black"></i></div>
+          <p>Clients</p>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-3 mb-30">
+        <div class="single-counter text-center">
+          <span class="count">{{totalBeauticianUserCount}}</span>
+          <div class="border_1"><i class="fa fa-leaf text-black"></i></div>
+          <p>Beauticians</p>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-3 mb-30">
+        <div class="single-counter text-center">
+          <span class="count">{{totalClientReviewCount}}</span>
+          <div class="border_1"><i class="fa fa-leaf text-black"></i></div>
+          <p>Review's</p>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-3 mb-30">
+        <div class="single-counter text-center">
+          <span class="count">{{totalServiceCount}}</span>
+          <div class="border_1"><i class="fa fa-leaf text-black"></i></div>
+          <p>Services</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end counter -->
+
+<!-- our barber section -->
+<section class="our_barber_section">
+  <!-- Section Title start-->
+  <app-section-title title="OUR BEAUTICIANS" subTitle="GET YOUR BEARD"></app-section-title>
+
+  <div class="container">
+    <div class="row">
+      <!--Team One Single Start-->
+      <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms" *ngFor="let beautician of beauticians">
+        <app-barber-card title="Beautician" subTitle="{{beautician.firstName}} {{beautician.lastName}}" image="assets/barber/team-1.jpg" facebook="{{beautician.social.facebook}}"
+          twitter="{{beautician.social.twitter}}" linkedin="{{beautician.social.linkedin}}" dribbble="{{beautician.social.dribble}}"></app-barber-card>
+      </div>
+      <!--Team One Single End-->
+    </div>
+  </div>
+</section>
+<!-- end our barber section -->
+
+
+<!--Testimonial One Start-->
+<section class="testimonial-one">
+  <!-- Section Title start-->
+  <app-section-title title="ClIENT'S REVIEW" subTitle="GET YOUR BEARD"></app-section-title>
+  <!-- Section Title end-->
+
+  <div class="testimonial-one-shape-2 float-bob-y">
+    <img src="assets/shape/shape-1.png" alt="">
+  </div>
+  <div class="testimonial-one-shape-3 float-bob-y">
+    <img src="assets/shape/shape-2.png" alt="">
+  </div>
+
+
+  <div class="container">
+
+    <owl-carousel-o [options]="customOptions">
+
+      <ng-container *ngFor="let review of reviews">
+        <ng-template carouselSlide id="{{review._id}}">
+          <div class="thm-owl__carousel testimonial-one__carousel">
+<!--            <div class="item" >-->
+              <app-testimonial-card [review]="review"></app-testimonial-card>
+<!--            </div>-->
+          </div>
+        </ng-template>
+      </ng-container>
+
+    </owl-carousel-o>
+
+<!--    <div class="testimonial-one__bottom">-->
+<!--      <div class="row">-->
+<!--        <div class="col-xl-12">-->
+<!--          -->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+</section>
+<!--Testimonial One End-->
+
+
+<!-- start contact here section -->
+<section class="contact_here_section">
+  <!-- Section Title start-->
+  <app-section-title title="Contact Here" subTitle="CONTACT"></app-section-title>
+  <!-- Section Title end-->
+  <div class="container">
+    <app-contact-form></app-contact-form>
+  </div>
+</section>
+<!-- end contact here section -->
